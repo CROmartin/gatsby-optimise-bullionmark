@@ -1,0 +1,24 @@
+.ErrorPage {
+    .ErrorPageWrapper {
+        // text-align: center;
+        padding: 60px 0;
+
+        .ErrorTitle {            
+            margin-bottom: 4px;
+            font-weight: 700;
+            font-size: 26px;
+            line-height: 32px;
+        }
+        .ErrorTitleSubTitle{
+            max-width: 600px;
+            width: 100%;
+            font-weight: 500;
+            line-height: 26px;
+        }
+
+        .ErrorDescription {
+            font-weight: 300;
+            margin-top: 10px;
+        }
+    }
+}

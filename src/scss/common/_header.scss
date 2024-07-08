@@ -1,0 +1,1449 @@
+#HeaderWrapper {
+  position: sticky;
+  top: 0;
+  z-index: $appBar;
+
+  .MuiContainer-root {
+    @include media-between($md, $lg) {
+      max-width: $lg;
+    }
+  }
+
+  .PageLoader {
+    .LinearLoader {
+      &.MuiLinearProgress-root {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 3px;
+      }
+    }
+
+    .CircularLoader {
+      position: fixed;
+      top: 15px;
+      right: 20px;
+
+      @include media($md) {
+        top: 26px;
+        right: 4px;
+      }
+    }
+  }
+
+  .MuiAppBar-root {
+    .MainHeader {
+      @include padding-vertical(18);
+
+      @include media($md) {
+        @include padding-vertical(13);
+      }
+
+      &__Wrapper {
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+
+        @include media-min($lg) {
+          gap: 16px;
+        }
+
+        .Left {
+          .Logo {
+            img {
+              width: auto;
+              max-width: 280px;
+
+              @include media($sm) {
+                width: 100%;
+                max-width: 260px;
+              }
+            }
+          }
+        }
+
+        .Right {
+          align-items: center;
+          gap: 20px;
+
+          @include media-between($md, $mmd) {
+            gap: 10px;
+          }
+
+          @include media($md) {
+            gap: 16px;
+          }
+
+          @include media($xs) {
+            gap: 8px;
+          }
+
+          .PhoneNumber {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 500;
+            flex-shrink: 0;
+            @include transition;
+
+            @include media($md) {
+              display: none;
+            }
+
+            svg {
+              @include media-between($md, $mmd) {
+                display: none;
+              }
+            }
+          }
+
+          .SearchField {
+            align-self: stretch;
+            min-width: 200px;
+
+            @include media($md) {
+              min-width: initial;
+            }
+
+            .MuiTextField-root {
+              height: 100%;
+
+              .MuiInputBase-root {
+                font-size: pxToRem(14);
+                line-height: pxToRem(20);
+                height: inherit;
+                padding: 0;
+
+                .MuiInputBase-input {
+                  padding-left: 16px;
+                }
+
+                .MuiInputAdornment-root {
+                  margin-left: 0;
+
+                  .MuiIconButton-root {
+                    width: auto;
+                    height: auto;
+
+                    svg {
+                      width: 18px;
+                      height: 18px;
+                    }
+                  }
+                }
+
+                .MuiAutocomplete-endAdornment {
+                  position: static;
+                  margin-right: 5px;
+
+                  .MuiIconButton-root {
+                    width: 34px;
+                    height: 34px;
+
+                    &.MuiAutocomplete-popupIndicator {
+                      visibility: hidden;
+                    }
+                  }
+                }
+              }
+            }
+
+            @include media($md) {
+              display: none;
+            }
+
+            @include media-min($lg) {
+              width: 372px;
+            }
+
+            @include media-between($md, $mmd) {
+              min-width: 160px;
+            }
+
+            .Wrapper {
+              position: relative;
+              height: 100%;
+
+              .SearchButton {
+                position: absolute;
+                right: 0;
+                height: inherit;
+              }
+            }
+          }
+
+          .Marketingoffer {
+            align-self: stretch;
+
+            a {
+              display: flex;
+              align-items: center;
+              height: 100%;
+              border-radius: 10px;
+            }
+
+            img {
+              border-radius: inherit;
+              max-height: 100%;
+              max-width: 300px;
+
+              @include media-between($md, $mmmd) {
+                max-width: 200px;
+              }
+            }
+          }
+
+          .SignInButton {
+            flex-shrink: 0;
+            border-radius: 8px;
+
+            @include media($xs) {
+              padding: 5px;
+
+
+            }
+
+            @include media-between($md, $mmd) {
+              @include padding-horizontal(10);
+            }
+
+            .MuiButton-startIcon {
+              @include margin-horizontal(0);
+
+              @include media-min($xs) {
+                display: none;
+              }
+            }
+
+            .MuiTypography-root {
+              @include media($xs + 1) {
+                display: none;
+              }
+            }
+          }
+
+          .HamburgerButton {
+            display: none;
+
+            .HamburgerIcon {
+              font-size: 22px;
+            }
+
+            .CrossIcon {
+              font-size: 16px;
+            }
+
+            @include media($md) {
+              display: inline-flex;
+            }
+          }
+        }
+      }
+    }
+
+    .NavigationHeader {
+      position: relative;
+
+      @include media($md) {
+        display: none;
+      }
+
+      &__Wrapper {
+        align-items: center;
+        justify-content: space-between;
+
+        .LeftPart {
+          justify-content: space-between;
+          align-items: center;
+          gap: 16px;
+
+          @include media-min($mmmd) {
+            gap: 50px;
+          }
+
+          .MenuLink {
+            color: $dark;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+            @include transition;
+            @include padding-vertical(19);
+
+            @include media($lg) {
+              @include padding-vertical(10);
+            }
+
+            &:hover {
+              color: $yellowFuel;
+            }
+
+            &.Active {
+              font-weight: 600;
+              color: $yellowFuel;
+            }
+          }
+
+          .HoverTooltip {
+            .MuiTooltip-tooltip {
+              box-shadow: none;
+              margin: 0;
+              border-radius: 0;
+              border-top: 1px solid rgba($dark, 0.1);
+
+              .SubMenu {
+                .MuiList-root {
+                  .SubMenuLink {
+                    color: rgba($dark, 0.6);
+                    text-decoration: none;
+                    @include transition;
+
+                    &:hover {
+                      color: $yellowFuel;
+                    }
+
+                    &:first-of-type {
+                      color: $dark;
+
+                      &:hover {
+                        color: $yellowFuel;
+                      }
+
+                      .MuiTypography-root {
+                        text-transform: uppercase;
+
+                        @include media-min($lg) {
+                          margin-bottom: 9px;
+                        }
+                      }
+                    }
+
+                    &.Active {
+                      color: $yellowFuel;
+                      text-transform: uppercase;
+                    }
+
+                    .MuiTypography-root {
+                      @include padding-vertical(8);
+
+                      @include media($lg) {
+                        @include padding-vertical(6);
+                      }
+                    }
+                  }
+                }
+
+                &.SingleMenu {
+                  @include padding-vertical(32);
+
+                  .MuiList-root {
+                    .MuiListItemButton-root {
+                      @include padding-horizontal(30);
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .PopoverMegaMenu {
+            width: 100%;
+
+            .MuiTooltip-tooltip {
+              max-width: initial;
+
+              .MegaMenu {
+                &__Wrapper {
+                  flex-wrap: wrap;
+                  gap: 16px;
+                  @include padding-vertical(32, 30);
+
+                  @include media($lg) {
+                    @include padding-vertical(10, 20);
+                  }
+
+                  .Left {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    flex-grow: 1;
+                    gap: 8px;
+
+                    @include media-min($xl) {
+                      gap: 14px;
+                    }
+                  }
+
+                  .Right {
+                    flex-direction: column;
+                    padding-top: 8px;
+
+                    .DestinationMenu {
+                      display: grid;
+                      grid-template-columns: repeat(2, 1fr);
+                      align-items: flex-start;
+                      gap: 20px;
+
+                      @include media($lg) {
+                        grid-template-columns: repeat(4, 1fr);
+                      }
+
+                      .DestinationLink {
+                        position: relative;
+                        $textPosition: 12px;
+                        color: $white;
+
+                        img {
+                          @include media-min($lg) {
+                            max-width: 250px;
+                          }
+                        }
+
+                        @include transition;
+
+                        &:hover {
+                          color: $yellowFuel;
+                        }
+
+                        .ImageWrapper {
+                          position: relative;
+                          border-radius: 16px;
+                          overflow: hidden;
+
+                          &::after {
+                            content: "";
+                            position: absolute;
+                            inset: 0;
+                            background: linear-gradient(360deg, #000000 0%, rgba(0, 0, 0, 0) 61.15%);
+                          }
+
+                          img {
+                            width: 100%;
+                            height: 160px;
+                            object-fit: cover;
+
+                            @include media-min($lg) {
+                              max-width: 250px;
+                            }
+                          }
+                        }
+
+                        .MuiTypography-root {
+                          position: absolute;
+                          bottom: $textPosition;
+                          left: $textPosition;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .RightPart {
+          gap: 10px;
+          align-items: center;
+
+          .ClickTooltipWrapper {
+            .MenuButton {
+              color: #1D2129;
+            }
+          }
+
+          .MuiBadge-badge {
+            top: 8px;
+            right: 8px;
+          }
+        }
+      }
+
+      .ConstantApiLoader {
+        &.MuiLinearProgress-root {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          height: 1px;
+        }
+      }
+    }
+  }
+
+  &.FrontHeader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+
+    #PricingHeader {
+      background-color: #1D212966;
+
+      .PricingHeader {
+        .PricingHeader__Wrapper {
+          .PricingHeader__Wrapper--Content {
+            .StockReturnWithName {
+              border-right: 1px solid #ffffff33;
+
+              &>.MuiTypography-root {
+                color: $white;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .MuiAppBar-positionStatic {
+      background: #1D212966;
+
+      .HeaderContainerWrapper {
+        .MainHeader__Wrapper {
+          .Center {
+            .NavigationHeader {
+              .NavigationHeader__Wrapper {
+                .LeftPart {
+                  .MenuLink {
+                    &:not(:hover) {
+                      color: $white;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .Right {
+            .HamburgerButton {
+
+              .HamburgerIcon,
+              .CrossIcon {
+                color: $white;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .HeaderContainerWrapper {
+      position: relative;
+
+      .MainHeader {
+        @include media-min($md) {
+          @include padding-vertical(0);
+        }
+
+        .MainHeader__Wrapper {
+          @include media($lg) {
+            flex-wrap: wrap;
+          }
+
+          .Left {
+            @include media($sm) {
+              flex: 1;
+            }
+
+            .Logo {
+              img {
+                // max-width: 190px;
+              }
+            }
+          }
+
+          .Center {
+            justify-content: center;
+            flex-grow: 1;
+
+            @include media($md) {
+              display: none;
+            }
+
+            .NavigationHeader {
+              position: static;
+
+              @include media($lg) {
+                width: 100%;
+              }
+
+              .NavigationHeader__Wrapper {
+                @include media($lg) {
+                  justify-content: center;
+                }
+
+                .LeftPart {
+                  a {
+                    @include media-min($md) {
+                      line-height: 22px;
+                      @include padding-vertical(29);
+                    }
+                  }
+
+                  hr {
+                    display: none;
+                  }
+
+                  // .PopoverMegaMenu {
+                  //   margin-top: 18px !important;
+
+                  //   @include media($lg) {
+                  //     margin-top: 6px !important;
+                  //   }
+                  // }
+                }
+              }
+
+              .ConstantApiLoader {
+                display: none;
+              }
+            }
+          }
+
+          .Right {
+            .ActionButton {
+              .MuiButton-startIcon {
+                @include media-min($xs - 1) {
+                  display: none;
+                }
+              }
+
+              .MuiTypography-root {
+                @include media($xs) {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.Black {
+      position: sticky;
+
+      #PricingHeader {
+        background-color: $white;
+        border-bottom: 1px solid rgba($dark, 0.2);
+
+        .PricingHeader {
+          .PricingHeader__Wrapper {
+            .PricingHeader__Wrapper--Content {
+              .StockReturnWithName {
+                border-color: color-mix(in srgb, currentColor 50%, transparent);
+
+                &>.MuiTypography-root {
+                  color: $dark;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .MuiAppBar-positionStatic {
+        background-color: $white;
+
+        .HeaderContainerWrapper {
+          .MainHeader__Wrapper {
+
+            .Center {
+              .NavigationHeader {
+                .NavigationHeader__Wrapper {
+                  .LeftPart {
+                    .MenuLink {
+                      &:not(:hover) {
+                        color: $dark;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .Right {
+              .HamburgerButton {
+
+                .HamburgerIcon,
+                .CrossIcon {
+                  color: $dark;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &.BmkFrontHeader {
+      header {
+        .HeaderContainerWrapper {
+          .MainHeader {
+            .MainHeader__Wrapper {
+              .Center {
+                .NavigationHeader {
+                  .NavigationHeader__Wrapper {
+                    .MenuLink {
+                      &:hover {
+                        color: $pumpkinOrange;
+                      }
+                    }
+                  }
+                }
+              }
+              .Right{
+                .SignInButton{
+                  @include media($xs + 1){
+                    display: none;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.BullionmarkHeader {
+    &.ShopBannerAbsent {
+      .MuiAppBar-positionStatic {
+        background-color: #000000;
+      }
+    }
+
+    .MuiAppBar-root {
+      .NavigationHeader__Wrapper {
+        .LeftPart {
+          .HoverTooltip {
+            .MuiTooltip-tooltip {
+              .SubMenu {
+                .MuiList-root {
+                  .SubMenuLink {
+                    &:hover {
+                      color: $pumpkinOrange;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .HeaderContainerWrapper {
+        position: relative;
+
+        .MainHeader {
+          @include padding-vertical(0);
+
+          @include media($md) {
+            @include padding-vertical(13);
+          }
+
+          .NavigationHeader {
+            position: static;
+
+            &>.MuiContainer-root {
+              @include padding-horizontal(0);
+            }
+          }
+        }
+      }
+    }
+
+    header {
+      @include media($md) {
+        position: sticky;
+      }
+    }
+
+    .BmkWhiteToolbar {
+      .MuiAppBar-positionStatic {
+        background-color: $white;
+
+        .Wrapper {
+          color: #000000;
+        }
+      }
+    }
+
+    .HeaderContainerWrapper {
+      .MainHeader__Wrapper {
+        .Center {
+          .NavigationHeader {
+            padding: 0;
+          }
+
+          .MenuLink {
+            &:hover {
+              color: $pumpkinOrange;
+            }
+          }
+        }
+        .Right{
+          .SignInButton{
+            @include media($xs + 1){
+              display: none;
+            }
+          }
+        }
+      }
+    }
+
+    .NavigationHeader {
+      padding: 10px 0;
+
+      .NavigationHeader__Wrapper {
+        justify-content: end;
+
+        .SearchField {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          background: #FFFFFF29;
+          box-shadow: 0px 1px 2px 0px #1018280D;
+          min-width: 400px;
+          border-radius: 8px;
+
+          .MuiTextField-root {
+            height: 100%;
+
+            .MuiInputBase-root {
+              font-size: 16px;
+              line-height: 26px;
+              height: inherit;
+              padding: 0;
+
+              .MuiInputBase-input {
+                padding: 9px 16px;
+                color: $white;
+              }
+
+              .MuiInputAdornment-root {
+                margin-left: 0;
+
+                .MuiIconButton-root {
+                  width: auto;
+                  height: auto;
+
+                  svg {
+                    width: 18px;
+                    height: 18px;
+                  }
+                }
+              }
+
+              .MuiAutocomplete-endAdornment {
+                position: static;
+                margin-right: 5px;
+
+                .MuiIconButton-root {
+                  width: 34px;
+                  height: 34px;
+
+                  &.MuiAutocomplete-popupIndicator {
+                    visibility: hidden;
+                  }
+                }
+              }
+            }
+          }
+
+          @include media($md) {
+            display: none;
+          }
+
+          @include media-min($lg) {
+            width: 597px;
+          }
+
+          .Wrapper {
+            position: relative;
+            height: 100%;
+
+            .SearchButton {
+              color: $white;
+              position: absolute;
+              right: 0;
+              height: inherit;
+            }
+          }
+        }
+
+        .LeftPart {
+          @include media($xl + 1) {
+            gap: 30px;
+          }
+
+          .MuiDivider-root {
+            display: none;
+          }
+        }
+
+        .RightPart {
+          gap: 20px;
+          color: #000000;
+
+          @include media($lg) {
+            gap: 10px;
+          }
+
+          .MenuButton,
+          a {
+            color: inherit;
+          }
+
+          .MenuButton {
+            &.Active {
+              background-color: $pumpkinOrange;
+            }
+          }
+        }
+      }
+    }
+
+    .NavigationHeader {
+      .NavigationHeader__Wrapper {
+        .SearchField {
+          .MuiTextField-root {
+            .MuiInputBase-root {
+              .MuiInputBase-input {
+                color: #000000;
+              }
+            }
+          }
+
+          .Wrapper {
+            .SearchButton {
+              color: #000000;
+            }
+          }
+        }
+
+        .RightPart {
+          color: #000000;
+
+          .MenuButton,
+          a {
+            color: inherit;
+          }
+        }
+      }
+    }
+
+    // .MuiAppBar-positionStatic {
+    //   .HeaderContainerWrapper {
+    //     .MainHeader {
+    //       .MainHeader__Wrapper {
+    //         .Center {
+    //           .NavigationHeader {
+    //             .NavigationHeader__Wrapper {
+    //               .LeftPart {
+    //                 .PopoverMegaMenu {
+    //                   .MuiTooltip-tooltip {
+    //                     background: black;
+
+    //                     .SubMenu {
+    //                       .MuiList-root {
+    //                         .SubMenuLink {
+    //                           color: #ffffff9c;
+
+    //                           &:first-of-type {
+    //                             color: $white;
+    //                           }
+    //                         }
+    //                       }
+    //                     }
+    //                   }
+    //                 }
+    //               }
+    //             }
+    //           }
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+
+    &.BmkBlackHeader {
+      background-color: #000000;
+
+      #PricingHeader {
+        color: $white;
+        background-color: inherit;
+      }
+
+      header {
+        background-color: #000000;
+
+        .HeaderContainerWrapper {
+          .MainHeader__Wrapper {
+            .Center {
+              .MenuLink {
+                color: $white;
+
+                &:hover {
+                  color: $pumpkinOrange;
+                }
+              }
+
+              .NavigationHeader {
+                .NavigationHeader__Wrapper {
+                  .LeftPart {
+                    .PopoverMegaMenu {
+                      .MuiTooltip-tooltip {
+                        background: black;
+
+                        .SubMenu {
+                          .MuiList-root {
+                            .SubMenuLink {
+                              color: #ffffff9c;
+
+                              &:first-of-type {
+                                color: $white;
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+
+            .Right {
+              .HamburgerButton {
+                color: $white;
+              }
+            }
+          }
+        }
+
+        // &.MuiAppBar-positionFixed {
+        .NavigationHeader {
+          .NavigationHeader__Wrapper {
+            .SearchField {
+              .Wrapper {
+                .SearchButton {
+                  color: $white;
+                }
+              }
+
+              .MuiTextField-root {
+                .MuiInputBase-root {
+                  .MuiInputBase-input {
+                    color: $white;
+
+                    &::-webkit-input-placeholder,
+                    &::placeholder {
+                      color: currentColor;
+                      opacity: 1;
+                    }
+                  }
+                }
+              }
+            }
+
+            .RightPart {
+              color: $white;
+            }
+          }
+        }
+
+        // }
+
+      }
+
+      .BmkMobileSecondaryMenu {
+        .MuiAppBar-positionStatic {
+          .Wrapper {
+            color: $black;
+          }
+        }
+      }
+    }
+
+    &.FrontHeader {
+      .NavigationHeader {
+        .NavigationHeader__Wrapper {
+          .SearchField {
+            .MuiTextField-root {
+              .MuiInputBase-root {
+                .MuiInputBase-input {
+                  color: $white;
+                }
+              }
+            }
+
+            .Wrapper {
+              .SearchButton {
+                color: $white;
+              }
+            }
+          }
+
+          .RightPart {
+            color: $white;
+
+            .MenuButton,
+            a {
+              color: inherit;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+#PricingHeader {
+  .PricingHeader {
+    @include padding-vertical(14);
+
+    @include media($md) {
+      display: none;
+    }
+
+    &__Wrapper {
+      $spaceBetweenChild: 3vw;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+
+      &:hover {
+        * {
+          animation-play-state: paused;
+        }
+      }
+
+      &--Content {
+        gap: $spaceBetweenChild;
+
+        .StockReturnWithName {
+          border-right: 1px solid color-mix(in srgb, currentColor 50%, transparent);
+          padding-right: $spaceBetweenChild;
+
+          p {
+            margin: 0;
+          }
+        }
+      }
+
+      .marquee-container {
+        cursor: all-scroll;
+        background: inherit;
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+
+      .drag-span {
+        line-height: 50px;
+        position: relative;
+        user-select: none;
+      }
+    }
+
+    .MuiDivider-root {
+      height: 20px;
+      align-self: initial;
+    }
+  }
+}
+
+#ActionMenu {
+  &.MuiTooltip-popper {
+    .MuiTooltip-tooltip {
+      max-width: initial;
+
+      .Wrapper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 15px 11px;
+        gap: 11px;
+
+        @include media($md) {
+          grid-template-columns: repeat(1, 1fr);
+        }
+
+        .DummyBox {
+          @include media($md) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+#MobileMenu {
+  width: 100%;
+
+  &.MuiDrawer-root {
+    top: calc(67px + 50px + 1px);
+
+    &.FrontPageMenu {
+      top: 70px;
+
+      @include media($ssm) {
+        top: 65px;
+      }
+    }
+
+    // &.isHomePage {
+    //   top: calc(67px + 50px + 1px) !important;
+
+    //   .MuiDrawer-paper {
+    //     max-height: calc(100% - 67px - 50px - 1px) !important;
+    //   }
+    // }
+
+    // &.ScrollActive {
+    //   top: calc(67px + 1px);
+
+    //   .MuiDrawer-paper {
+    //     max-height: calc(100% - 67px - 1px);
+    //   }
+    // }
+
+    .MuiBackdrop-root {
+      background-color: transparent;
+    }
+
+    .MuiDrawer-paper {
+      top: inherit;
+      width: inherit;
+      // max-height: calc(100% - 67px - 1px);
+      max-height: calc(100% - 67px - 50px - 1px);
+      box-shadow: $shadow5;
+
+      .MuiList-root {
+        padding-bottom: 20px;
+
+        .MuiListItemButton-root {
+          font-weight: 600;
+          text-transform: uppercase;
+          gap: 20px;
+
+          &.Mui-selected {
+            font-weight: 700;
+            color: $yellowFuel;
+            background-color: transparent;
+          }
+
+          &.Contact {
+            gap: 6px;
+          }
+
+          &.CollapsedMenu {
+            &:not(.Mui-selected) {
+              .MuiListItemText-root {
+                opacity: 0.8;
+              }
+            }
+          }
+
+          .MuiListItemText-root {
+            .MuiListItemText-primary {
+              font-weight: inherit;
+            }
+          }
+        }
+
+        .MuiCollapse-root {
+          .MuiList-root {
+            padding-bottom: 8px;
+
+            .MuiListItemButton-root {
+              text-transform: initial;
+              @include padding-vertical(4);
+
+              &.Mui-selected {
+                font-weight: 600;
+              }
+
+              &:not(.Mui-selected) {
+                .MuiListItemText-root {
+                  opacity: 0.6;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.BmkMobileMenuWithoutAnygap {
+    &.MuiDrawer-root {
+      top: 110px;
+
+      &.FrontPageMenu {
+        top: 68px;
+
+        @include media($ssm) {
+          top: 60px;
+        }
+      }
+    }
+  }
+
+  &.BmkMobileMenu {
+    &.MuiDrawer-root {
+      .MuiDrawer-paper {
+        background-color: #000000;
+        color: $white;
+      }
+    }
+  }
+  &.BmkCommonMobileClass{
+    .HeaderContainer{
+      .SignInButton{
+        display: none;
+        @include media($xs + 1){
+          display: flex;
+          width: 100%;
+          justify-content: left;
+          padding: 10px 21px;
+        }
+      }
+    }
+  }
+}
+
+#MobileSecondaryMenu {
+  position: relative;
+
+  @include media-min($md) {
+    display: none;
+  }
+
+  .MuiAppBar-root {
+    @include padding-vertical(9);
+  }
+
+  .Wrapper {
+    justify-content: space-between;
+    gap: 10px;
+
+    .MenuButton {
+      width: 32px;
+      height: 32px;
+      color: inherit;
+    }
+
+    .MuiBadge-badge {
+      top: 9px;
+      right: 5px;
+    }
+
+    .PopoverSearchField {
+      width: 100%;
+
+      .MuiTooltip-tooltip {
+        max-width: initial;
+
+        .MuiContainer-root {
+          @include padding-vertical(16);
+
+          .SearchField {
+            width: 100%;
+
+            .MuiTextField-root {
+              height: 100%;
+
+              .MuiInputBase-root {
+                font-size: pxToRem(14);
+                line-height: pxToRem(20);
+                height: inherit;
+                padding: 0;
+
+                .MuiInputBase-input {
+                  padding-left: 16px;
+                }
+
+                .MuiInputAdornment-root {
+                  margin-left: 0;
+
+                  .MuiIconButton-root {
+                    width: auto;
+                    height: auto;
+
+                    svg {
+                      width: 18px;
+                      height: 18px;
+                    }
+                  }
+                }
+
+                .MuiAutocomplete-endAdornment {
+                  position: static;
+                  margin-right: 5px;
+
+                  .MuiIconButton-root {
+                    width: 34px;
+                    height: 34px;
+
+                    &.MuiAutocomplete-popupIndicator {
+                      visibility: hidden;
+                    }
+                  }
+                }
+              }
+            }
+
+            .Wrapper {
+              position: relative;
+              height: 100%;
+
+              .SearchButton {
+                position: absolute;
+                right: 0;
+                height: inherit;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .ConstantApiLoader {
+    &.MuiLinearProgress-root {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+    }
+  }
+
+
+  &.BmkMobileSecondaryMenu {
+    .Wrapper {
+      color: $white;
+
+      .ClickTooltipWrapper {
+        .MenuButton {
+          &.Active {
+            background-color: $pumpkinOrange;
+          }
+        }
+      }
+    }
+  }
+}
+
+// .css-xhmn9d-MuiAutocomplete-listbox {
+//   .MuiAutocomplete-option {
+//     @include transition;
+
+//     &:hover {
+//       color: $yellowFuel;
+//     }
+//   }
+// }

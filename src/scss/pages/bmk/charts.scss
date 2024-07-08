@@ -1,0 +1,168 @@
+.MetalContentWrapper {
+  .MetalChartsTitle {
+    margin-top: 10px;
+  }
+
+  .MetalCardsWrapper {
+    margin: 20px 0 30px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+
+    @include media($lg + 1) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include media($md) {
+      margin: 15px 0;
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include media($sm) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+
+    .MetalCard {
+      background: #FFFFFF;
+      box-shadow: 6px 6px 27px 0px rgba(0, 0, 0, 0.0509803922);
+      border-radius: 10px;
+      min-height: 166px;
+      @include transition;
+
+      &:hover {
+        box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.13);
+        transform: scale(1.025);
+      }
+
+      .MetalCardHeader {
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+      }
+
+      .MetalCardBody {
+        .MetalCardContent {
+          padding: 10px;
+          text-align: center;
+          color: #777777;
+        }
+
+        .ChartWrapper,
+        .PriceSliderWrapper,
+        .MetalCardFooter {
+          padding: 10px;
+        }
+
+        .ChartWrapper {
+          .Price {
+            position: relative;
+            color: #000000;
+
+            &.High {
+              bottom: -4px;
+              // color: $success;
+              // border-bottom: 1px solid $success;
+            }
+
+            &.Low {
+              top: -4px;
+              // color: $redCoral;
+              // border-top: 1px solid $redCoral;
+            }
+          }
+        }
+
+        .PriceSliderWrapper {
+          color: #000000;
+
+          .PriceWrapper {
+            justify-content: space-between;
+          }
+
+          .SliderWrapper {
+            align-items: baseline;
+            gap: 5px;
+
+            .Slider {
+              color: $blueCyan;
+              height: 6px;
+              padding: 0;
+              margin-bottom: 12px;
+
+              .MuiSlider-rail {
+                height: inherit;
+                opacity: 0.2;
+              }
+
+              .MuiSlider-thumb {
+                background-color: transparent;
+                top: 10px;
+                width: 0;
+                height: 0;
+                border-radius: initial;
+                border: none;
+                border-left: 7px solid transparent;
+                border-right: 7px solid transparent;
+                border-bottom: 7px solid $blueCyan;
+              }
+            }
+          }
+        }
+
+        .MetalCardFooter {
+          justify-content: center;
+          gap: 20px;
+          color: $white;
+          border-radius: 0 0 3px 3px;
+
+          svg {
+            margin-right: 8px;
+          }
+
+          &.UpTrend {
+            background-color: $success;
+          }
+
+          &.DownTrend {
+            background-color: $sinopia;
+
+            svg {
+              transform: rotate(180deg);
+            }
+          }
+
+          &.Neutral {
+            background-color: #ebaa4b;
+          }
+
+          &.NaN {
+            background-color: transparent;
+            justify-content: space-between;
+            color: #000000;
+          }
+
+        }
+      }
+
+    }
+
+
+  }
+
+  @include media-min($lg - 1) {
+    .MetalCardsWrapper>.MetalCard:nth-child(7) {
+      grid-column: span 2;
+    }
+
+    .MetalCardsWrapper>.MetalCard:nth-child(5),
+    .MetalCardsWrapper>.MetalCard:nth-child(8) {
+      grid-column-start: 3;
+    }
+
+    .MetalCardsWrapper>.MetalCard:nth-child(6),
+    .MetalCardsWrapper>.MetalCard:nth-child(9) {
+      grid-column-start: 4;
+    }
+  }
+
+}

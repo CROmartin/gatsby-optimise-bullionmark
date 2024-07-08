@@ -1,0 +1,119 @@
+.DateRangePickerWrapper {
+    div {
+        &[class$="_spectrum--medium"] {
+            background: transparent;
+        }
+    }
+
+    .DateRangePicker {
+        position: relative;
+
+        span {
+            &[class$="_spectrum-FieldLabel"] {
+                display: none;
+            }
+        }
+
+        div {
+            &[class$="_react-spectrum-Datepicker-inputContents"] {
+                @include media($xs) {
+                    font-size: 14px;
+                }
+            }
+        }
+
+        div {
+            &[class$="_spectrum-InputGroup-input"] {
+                @include media($lg) {
+                    padding: 3px 8px;
+                }
+            }
+        }
+
+        [class*="_spectrum-Field-field"] {
+            [class*="_react-spectrum-Datepicker-field"] {
+                [class*="_spectrum-InputGroup-input"] {
+                    font-size: 1rem;
+                    text-transform: uppercase;
+                    @include padding-vertical(17);
+
+                    [class*="_react-spectrum-Datepicker-inputContents"] {
+                        [class*="_react-spectrum-Datepicker-segments"] {
+                            [class*="_is-placeholder"] {
+                                [class*="_react-spectrum-DatePicker-placeholder"] {
+                                    font: inherit;
+                                }
+                            }
+
+                            [class*="_react-spectrum-DatePicker-cell"] {
+                                font-weight: 500;
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+
+                [class*="_spectrum-Textfield-validationIcon"] {
+                    top: 50%;
+                    transform: translateY(-50%);
+                    padding-right: 0;
+                }
+            }
+        }
+
+        [class*="_spectrum-HelpText"] {
+            [class*="_spectrum-HelpText-text"] {
+                font-weight: 600;
+                margin-top: 3px;
+                @include padding-vertical(0);
+            }
+        }
+
+    }
+
+    [class*="_i18nFontFamily"] {
+        font-family: $fontFamily;
+    }
+}
+
+div {
+    &[class$="_spectrum-Dialog-grid"] {
+        @include media($xs) {
+            display: block !important;
+            padding: 10px;
+        }
+
+        [class*="_spectrum-Calendar-date"] {
+            cursor: pointer;
+        }
+    }
+
+}
+
+div {
+    &[class$="_spectrum--medium"] {
+        isolation: initial !important;
+    }
+
+}
+
+[class*="_spectrum--lightest"] {
+    --spectrum-global-dimension-size-50: 10px !important;
+    --spectrum-alias-border-color: #1d212933 !important;
+    --spectrum-alias-icon-color: #0000008a !important;
+    --spectrum-blue-800: #eaa22b !important;
+    --spectrum-blue-900: #eaa22b !important;
+    --spectrum-gray-600: #1d21296b !important;
+    --spectrum-alias-highlight-selected: #eaa22b2e !important;
+    --spectrum-accent-background-color-hover: #1d2129 !important;
+    --spectrum-red-900: #ff1f1f !important;
+    --spectrum-red-1000: #ff1f1f !important;
+    --spectrum-global-dimension-font-size-75: 0.8125rem !important;
+    --spectrum-global-font-line-height-small: 1.125rem !important;
+}
+
+[class*="_react-spectrum-Datepicker-dialogContent"] {
+    [class*="_spectrum-HelpText"] {
+        padding-block: initial !important;
+    }
+}

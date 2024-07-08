@@ -1,0 +1,1389 @@
+.TravelCard {
+  &.MuiCard-root {
+    $horizontalSpacing: 20px;
+    box-shadow: $shadow7;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 20px;
+    @include transition;
+
+    &:hover {
+      box-shadow: $shadow5;
+      transform: scale(1.025);
+    }
+
+    .ImageLink {
+      img {
+        width: 100%;
+        height: 250px;
+        object-fit: cover;
+
+        @include media($lg) {
+          height: 200px;
+        }
+
+        @include media($md) {
+          height: 175px;
+        }
+      }
+    }
+
+    .MuiCardContent-root {
+      padding: $horizontalSpacing $horizontalSpacing 15px;
+
+      .Place {
+        @include max-line(2);
+      }
+
+      .Description {
+        margin-top: 12px;
+        color: $greyRegent;
+        @include max-line(2);
+      }
+    }
+
+    .MuiCardActions-root {
+      margin-top: auto;
+      padding: 0 $horizontalSpacing $horizontalSpacing;
+
+      .MuiButton-root {
+        .MuiButton-endIcon {
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.ProductCard {
+  &.MuiCard-root {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    box-shadow: $shadow7;
+    @include transition;
+
+    &:hover {
+      box-shadow: $shadow5;
+      transform: scale(1.025);
+    }
+
+    @include media($sm) {
+      max-width: 320px;
+      margin: auto;
+    }
+
+    $horizontalSpacing: 16px;
+    $verticalSpacing: 40px;
+
+    .ImageWrapper {
+      position: relative;
+
+      .ImageLink {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        padding: $verticalSpacing $horizontalSpacing $verticalSpacing;
+        height: 280px;
+
+        @include media-min($sm) {
+          height: 300px;
+        }
+
+        img {
+          object-fit: contain;
+          height: 100%;
+          width: auto;
+        }
+      }
+
+      .ProductStockStatus {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: $white;
+        margin-right: 6px;
+      }
+    }
+
+    .MuiCardContent-root {
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      padding: $horizontalSpacing $horizontalSpacing 13px;
+
+      .ProductName {
+        @include max-line(2);
+        @include transition;
+
+        .MuiTypography-root {
+          @include media($sm) {
+            font-size: pxToRem(14);
+            line-height: pxToRem(24);
+            font-weight: 600;
+          }
+        }
+      }
+
+      .ContentWrapper {
+        flex-direction: column;
+        flex-grow: 1;
+        margin-top: 15px;
+        gap: 4px;
+
+        .Top {
+          justify-content: space-between;
+          align-items: center;
+          margin-top: auto;
+
+          .Left {
+            align-items: center;
+            gap: 0px 8px;
+            flex-wrap: wrap;
+
+            .DiscountedPrice {
+              text-decoration: line-through;
+              color: rgba($dark, 0.5);
+            }
+          }
+
+          .Discount {
+            color: $sinopia;
+            flex-shrink: 0;
+
+            @include media($sm) {
+              font-size: pxToRem(13);
+              line-height: pxToRem(24);
+            }
+          }
+        }
+
+        .Bottom {
+          justify-content: space-between;
+          align-items: center;
+
+          .PriceMessage {
+            color: rgba($dark, 0.5);
+
+            @include media($sm) {
+              font-size: pxToRem(12);
+              line-height: pxToRem(28);
+              font-weight: 500;
+            }
+          }
+
+          .RightSide {
+            align-items: center;
+            gap: 4px;
+
+            .DiscountMessage {
+              color: $blueCyan;
+
+              @include media($sm) {
+                font-size: pxToRem(13);
+                line-height: pxToRem(24);
+                font-weight: 600;
+              }
+            }
+
+            .InfoButton {
+              width: auto;
+              height: auto;
+              padding: 0;
+
+              .MuiSvgIcon-root {
+                font-size: pxToRem(18);
+              }
+            }
+          }
+        }
+      }
+
+      .OfferBadge {
+        position: absolute;
+        top: 20px;
+        right: 48px;
+        padding: 3px 31px 3px 16px;
+        color: $whiteMilk;
+        font-size: 14px;
+        font-weight: 500;
+        border-radius: 6px;
+
+        @include media($md) {
+          top: 16px;
+          right: 40px;
+          padding: 2px 20px 2px 10px;
+        }
+      }
+    }
+
+    .MuiCardActions-root {
+      padding: 0 $horizontalSpacing $horizontalSpacing;
+      margin-top: auto;
+
+      .ClickTooltipWrapper {
+        align-self: stretch;
+
+        .OfferTag {
+          color: $dark;
+          border-color: $mercury;
+          height: 100%;
+          min-width: 56px;
+          margin-right: 15px;
+          @include padding-horizontal(8, 10);
+
+          &:hover {
+            border-color: $yellowFuel;
+          }
+        }
+      }
+
+      .MuiIconButton-root {
+        position: absolute;
+        $placement: 12px;
+        top: $placement;
+        border-radius: 50%;
+        color: $yellowFuel;
+
+        &.Stack {
+          left: $placement;
+        }
+
+        &.AddToCart {
+          right: calc($placement + 4px);
+        }
+      }
+
+      .TooltipOfferTag {
+        .MuiTooltip-tooltip {
+          box-shadow: $shadow6;
+
+          .Offers {
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 0 16px;
+            padding: 15px;
+
+            .ItemPrice {
+              font-weight: 700;
+              line-height: pxToRem(28);
+            }
+          }
+        }
+      }
+
+      .TooltipStack {
+        .MuiTooltip-tooltip {
+          box-shadow: $shadow11;
+          padding: 16px;
+          max-width: calc(100% - 10px);
+
+          .Content {
+            flex-direction: column;
+            gap: 4px;
+
+            .MuiTypography-body1 {
+              position: relative;
+              line-height: 1.6;
+              padding-left: 14px;
+
+              &:before {
+                content: "";
+                position: absolute;
+                top: 9px;
+                left: 0;
+                display: block;
+                height: 5px;
+                width: 5px;
+                border-radius: 50%;
+                background-color: $dark;
+              }
+
+              .MuiTypography-inherit {
+                font-weight: 700;
+              }
+            }
+          }
+        }
+      }
+
+      .PrimaryAction {
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
+
+// Start :: membershipcard css
+.MembershipCard {
+  &.MuiCard-root {
+    text-align: center;
+    border-radius: 20px;
+    @include transition;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &:hover {
+      .UpgradPlanButton {
+        background-color: $yellowFuel;
+        color: $white;
+      }
+    }
+
+    .MuiCardContent-root {
+      padding: 0;
+
+      h3 {
+        line-height: 36px;
+        @include padding-vertical(17);
+        @include transition;
+
+        @include media($md) {
+          line-height: 30px;
+          font-size: 24px;
+        }
+      }
+
+      .Details {
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 13px 30px;
+
+          @include media($sm) {
+            padding: 10px 30px 16px;
+          }
+
+          li {
+            padding: 10px 0;
+            border-bottom: 1px solid #0000000a;
+            opacity: 80%;
+            font-size: 16px;
+
+            @include media($sm) {
+              padding: 6px 0;
+            }
+          }
+        }
+      }
+
+      // previously we are having this below detials css but now getting this from backend so need to chagne above css
+      // .Details {
+      //   padding: 13px 30px;
+
+      //   .ContentWrapper {
+      //     padding: 10px 0;
+      //     justify-content: space-between;
+      //     border-bottom: 1px solid #0000000a;
+
+      //     .ContentTitle {
+      //       opacity: 80%;
+      //     }
+
+      //     .ContentValue {
+      //       font-size: 16px;
+      //     }
+      //   }
+      // }
+    }
+
+    .UpgradPlanButtonWrapper {
+      padding: 0 30px 30px;
+
+      @include media($sm) {
+        padding-bottom: 16px;
+      }
+
+      .UpgradPlanButton {
+        padding: 12px 16px;
+        border-color: $yellowFuel;
+        line-height: 20px;
+        letter-spacing: 2%;
+        @include transition;
+
+        &:hover {
+          background-color: $yellowFuel;
+          color: $white;
+        }
+      }
+    }
+  }
+
+  &.ActiveCard {
+    box-shadow: 0 8px 16px rgb(234 162 43 / 68%);
+
+    .UpgradPlanButton {
+      background-color: $yellowFuel;
+      color: $white;
+    }
+  }
+}
+
+// End :: membershipcard css
+
+.PostCard {
+  width: 100%;
+  height: 100%;
+
+
+  .PostImage {
+    cursor: pointer;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    max-height: 314px;
+    height: 100%;
+    flex-shrink: 0;
+
+    @include media($lg) {
+      max-height: 200px;
+    }
+  }
+
+  .CardContentWrapper {
+    .MuiCardContent-root {
+      padding: 0;
+      padding-top: 20px;
+
+      .PostInfo {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .UserInfo {
+          display: flex;
+          gap: 8px;
+          align-items: center;
+
+          .UserImage {
+            width: 36px;
+            height: 36px;
+            object-fit: cover;
+            border-radius: 50%;
+          }
+        }
+      }
+
+      .PostTitle {
+        text-align: left;
+        text-decoration: none;
+      }
+
+      .PostInfoDescription {
+        cursor: pointer;
+      }
+    }
+
+    .MuiCardActions-root {
+      .MuiButtonBase-root {
+        font-size: pxToRem(16);
+        line-height: 20px;
+
+        .MuiButton-endIcon {
+          margin-left: 10px;
+
+          svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+
+    .MuiTypography-root {
+      @include max-line(2);
+    }
+  }
+}
+
+.StatsCard {
+  &.MuiCard-root {
+    background-color: #fff;
+    box-shadow: $shadow7;
+    border-radius: 15px;
+    @include transition;
+
+    &:hover {
+      box-shadow: $shadow5;
+      transform: scale(1.025);
+    }
+
+    .MuiCardContent-root {
+      padding: 16px;
+    }
+
+    .TopWrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      .MuiStack-root {
+        justify-content: center;
+        align-items: center;
+        height: 41px;
+        width: 41px;
+        border: 1px solid #dde7eb;
+        box-shadow: 0px 5px 8.4px 0px rgba(0, 0, 0, 0.11);
+        border-radius: 10px;
+        background-color: #ffffff;
+      }
+
+      // svg {
+      //   width: 41px;
+      //   height: 41px;
+      // }
+    }
+
+    .BottomWrapper {
+      margin-top: 23px;
+      justify-content: space-between;
+      align-items: center;
+
+      .StatNumber {
+        line-height: 36px;
+      }
+
+      .MuiIconButton-root {
+        width: 36px;
+        height: 36px;
+        line-height: 36px;
+        color: $yellowFuel;
+        border-radius: 50%;
+        border: 1px solid rgba($yellowFuel, 0.5);
+
+        &:hover {
+          background-color: $yellowFuel;
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+.UserStatsCard {
+  &.MuiCard-root {
+    border-radius: 15px;
+    box-shadow: $shadow10;
+    border: 1px solid #3491fa14;
+    @include transition;
+
+    &:hover {
+      box-shadow: $shadow5;
+      transform: scale(1.025);
+    }
+
+    .MuiCardContent-root {
+      padding: 20px;
+      position: relative;
+
+      @include media($lg) {
+        padding: 15px;
+      }
+
+      // &:after {
+      //   width: 214px;
+      //   height: 214px;
+      //   border-radius: 50%;
+      //   position: absolute;
+      //   content: "";
+      //   // border: 50px solid;
+      //   top: 0;
+      //   left: 0;
+      //   transform: translate(-45%, -45%);
+
+      //   @include media($lg) {
+      //     width: 150px;
+      //     height: 150px;
+      //   }
+      // }
+
+      // &::before {
+      //   content: "";
+      //   position: absolute;
+      //   height: 203px;
+      //   width: 203px;
+      //   // background-color: #3491fa14;
+      //   bottom: -40%;
+      //   transform: translateY(40%);
+      //   right: -10%;
+      //   border-radius: 50%;
+
+      //   @include media($lg) {
+      //     width: 150px;
+      //     height: 150px;
+      //   }
+      // }
+    }
+
+    .TopWrapper {
+      display: flex;
+      justify-content: space-between;
+
+      .Return {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+
+        .MuiTypography-h4 {
+          display: inline-block;
+        }
+
+        .MuiTypography-body1 {
+          display: inline-block;
+          color: $success;
+
+          svg {
+            margin-right: 4px;
+          }
+        }
+
+        &.Loss {
+          .MuiTypography-body1 {
+            color: $error;
+
+            svg {
+              transform: rotate(180deg);
+            }
+          }
+        }
+
+        &.Neutral {
+          .MuiTypography-body1 {
+            color: $yellowFuel;
+          }
+        }
+      }
+
+      .MuiButtonBase-root {
+        // padding: 0;
+        // width: 15px;
+        // height: 15px;
+        color: $dark;
+      }
+    }
+
+    .BottomWrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 10px;
+      margin-top: 35px;
+
+      .Left {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+
+        .MuiStack-root {
+          justify-content: center;
+          align-items: center;
+          height: 41px;
+          width: 41px;
+          border: 1px solid #dde7eb;
+          box-shadow: 0px 5px 8.4px 0px rgba(0, 0, 0, 0.11);
+          border-radius: 10px;
+          background-color: #ffffff;
+        }
+
+
+        // svg {
+        //   width: 41px;
+        //   height: 41px;
+        // }
+      }
+    }
+  }
+}
+
+.LineChartCard {
+  &.MuiCard-root {
+    border-radius: 15px;
+    box-shadow: $shadow10;
+    @include transition;
+
+    &:hover {
+      box-shadow: $shadow5;
+      transform: scale(1.025);
+    }
+
+    .MuiCardContent-root {
+      padding: 20px;
+      position: relative;
+    }
+
+    .TopWrapper {
+      display: flex;
+      justify-content: space-between;
+
+      .Right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: space-between;
+        padding-bottom: 13px;
+
+        .MuiButtonBase-root {
+          // padding: 0;
+          // width: 15px;
+          // height: 15px;
+          color: $dark;
+        }
+      }
+    }
+
+    .BottomWrapper {
+      background-color: $white;
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 5px;
+      padding: 24px 15px 17px;
+      border-radius: 11px;
+
+      .RangeBar {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        .Price {
+          display: flex;
+          justify-content: space-between;
+
+          .MuiTypography-body1 {
+            line-height: 11px;
+          }
+        }
+
+        .HLCircuit {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 10px;
+
+          .HLCircuitRange {
+            background-color: rgb(52 145 250 / 20%);
+            height: 3px;
+            border-radius: 33px;
+            flex: 1;
+            margin: 0 5px;
+            color: $blueCyan;
+            position: relative;
+
+            .MuiTypography-caption {
+              line-height: 9px;
+            }
+
+            .UpArrow {
+              position: absolute;
+              height: 14px;
+              bottom: 0;
+              @include transition;
+
+              svg {
+                width: 14px;
+                height: 14px;
+              }
+            }
+          }
+        }
+
+        .MuiTypography-root {
+          &.MuiTypography-body1 {
+            font-weight: 600;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Start :: shippingcard css
+.ShippingCard {
+  @include media($sm) {
+    width: 100%;
+  }
+
+  .IconCaculatorsPage {
+    svg {
+      stroke: $yellowFuel;
+    }
+  }
+
+  &.MuiCard-root {
+    position: relative;
+    padding: 20px;
+    border: 1px solid rgba($yellowFuel, 0.08);
+    border-radius: 15px;
+    box-shadow: 6px 6px 27px 0px rgba($black, 0.05);
+
+    .ShippingCardDetails {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 17px;
+
+      .MuiStack-root {
+        gap: 12px;
+        align-items: center;
+
+        .IconWrapper {
+          height: 50px;
+          width: 50px;
+          object-fit: cover;
+          border-radius: 10px;
+
+          .GoldBarIcon {
+            height: 100%;
+            width: 100%;
+            display: inline-block;
+
+            svg {
+              height: 50px;
+              width: 50px;
+            }
+          }
+        }
+      }
+    }
+
+    .CrossIconWithOutlineCircle {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      padding: 0;
+      height: 20px;
+      width: 20px;
+
+      svg {
+        height: 20px;
+        width: 20px;
+      }
+    }
+  }
+}
+
+// End :: shippingcard css
+
+.CartCard {
+  &.MuiCard-root {
+    display: flex;
+    align-items: center;
+    border-radius: 16px;
+    border: 1px solid rgba($dark, 0.1);
+    padding: 15px;
+    gap: 20px;
+
+    @include media($sm) {
+      flex-wrap: wrap;
+    }
+
+    .MuiCardMedia-root {
+      max-height: 140px;
+      object-fit: contain;
+
+      @include media-min($sm) {
+        width: initial;
+      }
+    }
+
+    .MuiCardContent-root {
+      padding: 0;
+      flex-grow: 1;
+
+      .TopWrapper {
+        justify-content: space-between;
+        gap: 16px;
+
+        @include media($xxl) {
+          flex-wrap: wrap;
+        }
+
+        .LeftWrapper {
+          .Name {
+            margin-bottom: 4px;
+
+            &:hover {
+              cursor: pointer;
+              color: $goldTips;
+            }
+          }
+        }
+
+        .RightWrapper {
+          display: grid;
+          align-items: center;
+          grid-template-columns: repeat(3, auto);
+          gap: 8px 40px;
+          flex-shrink: 0;
+
+          @include media($xs) {
+            gap: 8px 16px;
+          }
+
+          .LivePrice {
+            color: $success;
+            font-weight: 600;
+          }
+
+          .Quantity {
+            border: 1px solid $palladium;
+            border-radius: 8px;
+            overflow: hidden;
+
+            .MuiIconButton-root {
+              border-radius: initial;
+              height: 32px;
+
+              @include media($xs) {
+                height: 28px;
+                width: 28px;
+              }
+
+              &.Minus {
+                border-right: 1px solid $palladium;
+              }
+
+              &.Plus {
+                border-left: 1px solid $palladium;
+              }
+            }
+
+            .MuiTextField-root {
+              width: 40px;
+
+              .MuiInputBase-root {
+                height: 100%;
+
+                .MuiInputBase-input {
+                  padding: 0;
+                  height: inherit;
+                  text-align: center;
+                }
+
+                .MuiOutlinedInput-notchedOutline {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .BottomWrapper {
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+
+        .LeftSide {
+          flex-direction: column;
+          gap: 10px;
+          flex-wrap: wrap;
+
+          .DeliveryMethod {
+            gap: 8px;
+
+            .Label {
+              color: rgba($dark, 0.6);
+            }
+
+            .DeliveryMethodSelect {
+              font-weight: 700;
+              line-height: pxToRem(28);
+
+              .MuiSelect-select {
+                padding-left: 0;
+                @include padding-vertical(0);
+              }
+
+              .MuiOutlinedInput-notchedOutline {
+                display: none;
+              }
+            }
+          }
+        }
+
+        .RightSide {
+          flex-direction: column;
+          gap: 8px;
+
+          .ShippingMessage {
+            background-color: rgba($error, 0.05);
+            color: $redCoral;
+            border-radius: 4px;
+            padding: 3px 7px;
+
+            p {
+              margin: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.CartCardAbstract {
+  &.MuiCard-root {
+    padding: 15px;
+    border-radius: 16px;
+    border: 1px solid rgba($dark, 0.1);
+
+    .MuiCardMedia-root {
+      max-height: 80px;
+      object-fit: contain;
+      width: initial;
+    }
+
+    .MuiCardContent-root {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0;
+
+      @include media($xs) {
+        flex-direction: column;
+      }
+
+      .Wrapper {
+        align-items: center;
+        gap: 16px;
+        flex-grow: 1;
+
+        .About {
+          flex-grow: 1;
+
+          .Name {
+            margin-bottom: 8px;
+          }
+        }
+      }
+    }
+
+    .MuiDivider-root {
+      border-color: rgba($dark, 0.1);
+      @include margin-vertical(10);
+    }
+
+    .DeliveryMethod {
+      color: rgba($dark, 0.6);
+
+      .MuiTypography-root {
+        color: $dark;
+      }
+    }
+  }
+}
+
+// Start :: orderdetailscard css
+.OrderDetailsCard {
+  &.MuiCard-root {
+
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 6px 6px 27px 0px rgba($black, 0.05);
+
+    .MuiTypography-body1 {
+      color: rgba($black, 0.7);
+    }
+
+    .TopWrapper {
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 20px;
+    }
+
+    .OderDateInfoWrapper {
+      padding: 20px 0;
+    }
+
+    .OrderTotalButtonsWrapper {
+      align-items: center;
+      justify-content: space-between;
+
+      @include media($xs) {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      .OrderButtonsWrapper {
+        gap: 5px;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+// End :: orderdetailscard css
+
+// Start :: PrivateHoldingCard css
+.PrivateHoldingCard {
+  &.MuiCard-root {
+    display: flex;
+    align-items: center;
+    border-radius: 16px;
+    border: 1px solid rgba($dark, 0.1);
+    padding: 15px;
+    gap: 10px;
+
+    @include media($mmd) {
+      gap: 30px;
+    }
+
+    @include media($sm) {
+      justify-content: space-between;
+      align-items: normal;
+      flex-direction: column;
+    }
+
+    .MuiCardMedia-root {
+      max-height: 140px;
+      max-width: 140px;
+      object-fit: contain;
+    }
+
+    .MuiCardContent-root {
+      padding: 0;
+      flex-grow: 1;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+
+      .ProductDetailWrapper {
+        .MuiTypography-root {
+          margin-bottom: 5px;
+        }
+
+        .ButtonsWrapper {
+          gap: 5px;
+          flex-wrap: wrap;
+        }
+      }
+
+      .ClickTooltipWrapper {
+        .OptionButton {
+          // margin-right: -16px;
+          height: 30px;
+          width: 30px;
+
+        }
+      }
+
+
+    }
+
+  }
+}
+
+// End :: PrivateHoldingCard css
+
+
+
+
+.BmkCommonProductCard {
+  &.MuiCard-root {
+    position: relative;
+    background-color: transparent;
+    border-radius: 0;
+    @include transition;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &:hover {
+      box-shadow: 2px 4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .ImageWrapper {
+      .ImageLink {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-grow: 1;
+        padding: 50px 10px 0;
+        height: 380px;
+
+        @include media-min($sm) {
+          height: 300px;
+        }
+
+        img {
+          object-fit: contain;
+          height: 100%;
+          width: auto;
+        }
+      }
+    }
+
+    .MuiCardContent-root {
+      text-align: center;
+      flex-grow: 1;
+
+      .BmkProductStockStatus {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 3px;
+
+        .Message {
+          font-size: 10px;
+          line-height: 13px;
+          font-weight: 600;
+        }
+
+        &.Available {
+          border: 1px solid #008001;
+          color: #008001;
+        }
+
+        &.NotAvailable {
+          border: 1px solid #FF0012;
+          color: #FF0012;
+        }
+      }
+
+      .ProductName {
+        max-width: 260px;
+        margin: 16px auto 12px;
+        color: $black;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .PriceContentWrapper {
+        flex-direction: column;
+
+        .Top {
+          font-size: 13px;
+          line-height: 26px;
+          color: #777777;
+        }
+
+        .Bottom {
+          gap: 8px;
+          justify-content: center;
+          align-items: center;
+
+          .DiscountedPrice {
+            font-size: 20px;
+            line-height: 28px;
+          }
+
+          .ActualPrice {
+            font-size: 15px;
+            line-height: 20px;
+            font-weight: 400;
+            color: rgb($dark, 50%);
+            text-decoration: line-through;
+          }
+        }
+      }
+
+      .OfferBadge {
+        font-size: 14px;
+        line-height: 20px;
+        font-weight: 600;
+        padding: 6px 12px;
+        border-radius: 6px;
+        position: absolute;
+        top: 12px;
+        left: 8px;
+        color: $white;
+
+        &.Blue {
+          background-color: #3491FA;
+        }
+
+        &.Purple {
+          background-color: #8B34FA;
+        }
+
+        &.Red {
+          background-color: #FA4034;
+        }
+      }
+
+    }
+
+    .MuiCardActions-root {
+      .PrimaryAction {
+        border-radius: 0;
+      }
+
+      .MuiIconButton-root {
+        position: absolute;
+        top: 12px;
+        right: 8px;
+        border-radius: 50%;
+        color: $pumpkinOrange;
+        border: 1px solid #E5E6EB;
+
+        &:hover {
+          border-color: $pumpkinOrange;
+        }
+      }
+
+    }
+  }
+}
+
+.BmkPostCard {
+  text-decoration: none;
+
+  .Content {
+    .ThumbnailImage {
+      width: 100%;
+      height: 360px;
+      object-fit: cover;
+
+      @include media($xl) {
+        height: 340px;
+      }
+
+      @include media($lg) {
+        height: 300px;
+      }
+
+      @include media($md) {
+        height: 260px;
+      }
+
+      @include media($sm) {
+        height: auto;
+        aspect-ratio: 16 / 9;
+      }
+    }
+
+    .Title {
+      letter-spacing: -1px;
+      line-height: 1.2;
+      margin-top: 12px;
+    }
+
+    .Description {
+      font-weight: 400;
+      margin-top: 9px;
+      @include max-line(4)
+    }
+
+    .Date {
+      font-weight: 600;
+      margin-top: 14px;
+    }
+  }
+}

@@ -1,0 +1,270 @@
+#RegistrationPage {
+  @include media($md) {
+    flex-direction: column;
+  }
+
+  .LeftPart {
+    flex-direction: column;
+    width: 50%;
+
+    .StickyWrapper {
+      position: sticky;
+    }
+
+    @include media-min($xl) {
+      width: 55%;
+    }
+
+    @include media($md) {
+      width: 100%;
+    }
+
+    .ContentWrapper {
+      color: $white;
+      text-align: center;
+      padding: 70px 30px;
+      background-repeat: no-repeat;
+      background-size: cover;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      a {
+        color: inherit;
+      }
+
+    }
+
+    .SliderWrapper {
+      .ImageWrapper {
+        img {
+          width: 100%;
+          object-position: center;
+          object-fit: cover;
+
+          @include media($md) {
+            height: 300px;
+          }
+        }
+      }
+    }
+  }
+
+  .RightPart {
+    @include padding-vertical(50);
+    padding-left: 50px;
+    // padding-right: 50px;
+    width: 50%;
+
+    // @include media-min(1800px - 1) {
+    padding-right: calc((100vw - 1580px)/2);
+    // }
+
+    @include media-between($xxl - 1, 1800px) {
+      padding-right: calc((100vw - 1580px + 48px)/2);
+    }
+
+    @include media-between($lg, $xxl + 1) {
+      padding-right: calc((100vw - 1248px + 48px)/2);
+    }
+
+    // @include media-between($md, $lg) {
+    //   padding-right: calc((100vw - 1200px + 48px)/2);
+    // }
+    @include media($lg) {
+      padding-right: 24px;
+    }
+
+    @include media($md) {
+      padding-right: 50px;
+    }
+
+    @include media-min($xl) {
+      width: 45%;
+    }
+
+    @include media($md) {
+      width: 100%;
+    }
+
+    @include media($sm) {
+      padding: 24px;
+    }
+
+    form {
+      @include margin-auto;
+
+      @include media-min($xl) {
+        max-width: 800px;
+      }
+
+      .Header {
+        text-align: center;
+        margin-bottom: 37px;
+
+        @include media($sm) {
+          margin-bottom: 30px;
+        }
+
+        .Description {
+          margin-top: 16px;
+
+          @include media($sm) {
+            margin-top: 6px;
+          }
+        }
+      }
+
+      .AllFields {
+        $spacing: 11px;
+        flex-direction: column;
+        gap: $spacing;
+
+        .InputRow {
+          &.Password {
+            .MuiFormControl-root {
+              .MuiInputBase-root {
+                .MuiInputAdornment-root {
+                  .MuiIconButton-root {
+                    opacity: 0.5;
+                    background-color: $greyLight;
+
+                    &:hover {
+                      background-color: darken($greyLight, 10%);
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .Column {
+          gap: $spacing;
+
+          @include media($mmd) {
+            flex-direction: column;
+          }
+
+          .InputRow {
+            width: 100%;
+          }
+        }
+
+        .PasswordCondition {
+          padding-bottom: 10px;
+
+          .Message {
+            font-weight: 600;
+            margin-bottom: 10px;
+          }
+
+          .ConditionWrapper {
+            flex-direction: column;
+
+            .PasswordConditionItem {
+              align-items: center;
+              gap: 11px;
+
+              svg {
+                width: 20px;
+                height: 20px;
+              }
+            }
+          }
+        }
+
+        .OTPWrapper {
+          .Column {
+            @include media($xl) {
+              flex-direction: column;
+            }
+          }
+
+          .PhoneNumber {
+            position: relative;
+            width: 100%;
+
+            .MuiButton-root {
+              position: absolute;
+              top: 0;
+              right: 0;
+              padding: 6px;
+              height: 48px;
+
+              .MuiSvgIcon-root {
+                font-size: 13px;
+              }
+            }
+          }
+
+          .OTPField {
+            .MuiFormControl-root {
+              .MuiInputBase-root {
+                .MuiInputAdornment-root {
+                  height: initial;
+                  max-height: initial;
+                  align-self: stretch;
+                  margin-left: 0;
+                  margin-right: 0;
+
+                  .MuiIconButton-root {
+                    color: $white;
+                    background-color: $success;
+
+                    &:hover {
+                      background-color: darken($success, 10%);
+                    }
+
+                    .MuiSvgIcon-root {
+                      font-size: 13px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .ResendOTP {
+            justify-content: space-between;
+            @include padding-vertical(6, 8);
+
+            .Message {
+              font-weight: 400;
+              color: $greyWarm;
+            }
+
+            .MuiButton-root {
+              text-decoration: underline;
+            }
+          }
+        }
+
+        .UserType {
+          .MuiFormGroup-root {
+            gap: $spacing;
+
+            .MuiFormControlLabel-root {
+              padding-right: 10px;
+              margin-left: 0;
+              margin-right: 0;
+              background-color: $Seashell;
+            }
+          }
+
+          .AgentCode {
+            margin-top: $spacing;
+          }
+        }
+      }
+
+      .ActionWrapper {
+        margin-top: 35px;
+
+        @include media($sm) {
+          margin-top: 24px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,234 @@
+#SocialNetwork {
+    padding: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 15px;
+    background-color: rgba($mercury, 0.5);
+
+    @include media($md) {
+        padding: 25px 20px;
+    }
+
+    @include media($ssm) {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    @include media($xs) {
+        padding: 15px 8px;
+    }
+
+    .SocialNetworkTitle {
+        line-height: 36px;
+
+        @include media($md) {
+            line-height: 33px;
+        }
+    }
+
+    .SocialMediaHandler {
+        justify-content: center;
+        align-items: center;
+        gap: 15px;
+
+        @include media($md) {
+            gap: 10px;
+        }
+
+        @include media($sm) {
+            gap: 13px;
+            flex-wrap: wrap;
+        }
+
+        @include media($xs) {
+            gap: 0;
+        }
+
+        .SocialMediaLink {
+            background-color: $white;
+            height: 64px;
+            width: 64px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 0.61px solid rgba($dark, 0.2);
+            @include transition;
+
+            &:hover {
+                border: 0.61px solid rgba($dark, .5);
+            }
+
+            @include media($md) {
+                height: 54px;
+                width: 54px;
+            }
+        }
+
+        a {
+            font-size: pxToRem(24);
+            @include media($md) {
+                font-size: pxToRem(18);
+            }
+            &:hover {
+                color: $yellowFuel;
+            }
+        }
+    }
+}
+
+.ContactUsPage {
+    padding-bottom: 70px;
+
+    @include media($md) {
+        padding-bottom: 40px;
+    }
+
+    @include media($sm) {
+        padding-bottom: 24px;
+    }
+
+    .Title {
+        line-height: 36px;
+
+        @include media($md) {
+            // font-size: 26px;
+            line-height: 33px;
+        }
+    }
+
+    .ContactCardsWrapper {
+        padding-top: 20px;
+        gap: 30px;
+        justify-content: center;
+        flex-wrap: wrap;
+
+        @include media($xl) {
+            gap: 20px;
+        }
+
+        @include media($md) {
+            padding-top: 0px;
+        }
+
+        .ContactCard {
+            padding: 35px 30px 30px 30px;
+            border: 1px solid $mercury;
+            border-radius: 10px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            gap: 17px;
+            width: calc(33.33% - 30px);
+
+            @include media($md) {
+                width: calc(50% - 20px);
+                padding: 20px;
+            }
+
+            @include media($sm) {
+                width: 100%;
+            }
+
+
+            .IconWrapper {
+                height: 58px;
+                width: 58px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .OriginalIcon {
+                    height: auto;
+                    width: auto;
+                }
+            }
+
+            .CallUsNumber,
+            .EmailAddress {
+                @include transition;
+            }
+        }
+    }
+
+    .GetInTouchWrapper {
+        padding: 66px 0 87px;
+        display: flex;
+        justify-content: space-between;
+        align-items: stretch;
+        gap: 41px;
+
+        @include media($xl) {
+            gap: 30px;
+        }
+
+        @include media($md) {
+            flex-direction: column;
+            padding: 30px 0;
+
+        }
+
+        @include media($sm) {
+            @include padding-vertical(30, 20);
+        }
+
+
+        .GetInTouchLeftForm {
+            flex: 1;
+
+            #GetintouchForm {
+                margin-top: 28px;
+                @include media($sm) {
+                    margin-top: 20px;
+                }
+
+                .InputRow {
+                    margin-bottom: 38px;
+
+                    @include media($md) {
+                        margin-bottom: 24px;
+                    }
+
+                    @include media($sm) {
+                        margin-bottom: 20px;
+                    }
+
+
+                    &.EnquiryTexaea {
+                        margin-bottom: 28px;
+                    }
+                }
+
+                .SelectReason {
+                    svg {
+                        color: rgba($dark, 0.65);
+                        right: 17px;
+                    }
+                }
+
+                .FormAction {
+                    .GetInTouchSubmitBtn {
+                        padding-left: 59px;
+                        padding-right: 59px;
+                    }
+                }
+
+            }
+        }
+
+        .GetInTouchRightMap {
+            flex: 1;
+            iframe {
+                height: 100%;
+                border-radius: 20px;
+                width: 100%;
+                aspect-ratio: 16 / 9;
+                background-color: $mercury30;
+
+            }
+        }
+    }
+}

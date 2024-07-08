@@ -1,0 +1,137 @@
+.BlogPage,
+.BlogDetailPage {
+  .HeroSection {
+    margin-top: 30px;
+    .PostWrapper {
+      display: flex;
+      margin-top: 40px;
+      gap: 30px;
+      @include media($lg) {
+        flex-direction: column;
+        margin-top: 30px;
+      }
+      .LeftPostWrapper {
+        width: 50%;
+        flex: 1;
+        @include media($lg) {
+          width: 100%;
+        }
+        .PostCard {
+          .PostImage {
+            max-height: 380px;
+            object-fit: cover;
+            @include media($lg) {
+              max-height: 250px;
+            }
+          }
+        }
+      }
+      .RightPostWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        width: 50%;
+        flex: 1;  
+        @include media($lg) {
+          width: 100%;
+        }
+        .PostCard {
+          display: flex;
+          gap: 20px;
+          // align-items: center;
+          @include media($sm) {
+            flex-direction: column;
+            gap: 15px;
+          }
+          .PostImage {
+            height: 296px;
+            width: 296px;
+            object-fit: cover;
+            @include media($sm) {
+              height: 100%;
+              width: 100%;
+            }
+          }
+          .CardContentWrapper {
+            flex-grow: 1;
+            @include media-min($sm) {
+              @include padding-vertical(20);
+            }
+            .MuiCardContent-root {
+              padding-top: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+  .DiscoverPost {
+    margin-top: 60px;
+    @include media($md) {
+      margin-top: 40px;
+    }
+    &__title {
+      text-align: center;
+    }
+    .SearchWrapper {
+      justify-content: center;
+      display: flex;
+      gap: 20px;
+      @include padding-vertical(30);
+      @include media($sm) {
+        gap: 10px;
+        padding-top: 20px;
+      }
+      .MuiFormControl-root {
+        .MuiInputBase-root {
+          height: 100%;
+          .MuiInputBase-input {
+            width: 534px;
+            @include media($sm) {
+              padding: 10px 12px;
+            }
+          }
+        }
+      }
+      .MuiButton-root {
+        @include media($sm) {
+          padding: 10px;
+        }
+        .MuiButton-startIcon {
+          margin-left: initial;
+          @include media($xxs) {
+            display: none;
+          }
+        }
+      }
+    }
+    .PostFilter {
+      .MuiTabs-root {
+        .MuiTabs-flexContainer {
+          justify-content: center;
+          flex-wrap: wrap;
+          @include media($xxs) {
+            flex-direction: column;
+          }
+          .MuiTab-root {
+            font-size: pxToRem(16);
+            @include media($xs) {
+              min-height: initial;
+              padding: 8px 20px;
+            }
+          }
+        }
+      }
+      .TabPanel {
+        padding-top: 30px;
+      }
+    }
+  }
+}
+
+.BlogPage {
+  padding-bottom: 40px;
+  @include media($sm) {
+    padding-bottom: 30px;
+  }
+}

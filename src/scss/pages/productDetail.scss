@@ -1,0 +1,951 @@
+#PageProductDetail {
+  .AboutProduct {
+    .AboutWrapper {
+      $dividerColor: rgba($dark, 0.1);
+      align-items: flex-start;
+      gap: 2vw;
+
+      @include media-min($xxl) {
+        gap: 80px;
+      }
+
+      @include media($md) {
+        flex-direction: column;
+        align-items: initial;
+      }
+
+      .ProductImages {
+        flex: 1;
+        max-width: 50%;
+
+        @include media($md) {
+          max-width: 100%;
+        }
+
+        @include media-min($md) {
+          position: sticky;
+          top: calc(132px + 8px); // 132px: header hegiht
+        }
+
+        .swiper {
+          .swiper-wrapper {
+            .swiper-slide {
+              .ImageWrapper {
+                justify-content: center;
+                align-items: center;
+
+                img {
+                  max-width: initial;
+                }
+
+                .Magnifier {
+                  &>img {
+                    max-height: 300px;
+                    object-fit: contain;
+
+                    @include media-min($lg) {
+                      max-height: 420px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          &.MainThumbnail {
+            margin-bottom: 30px;
+
+            .swiper-wrapper {
+              .swiper-slide {
+                padding: 20px;
+
+                .ImageWrapper {
+                  .Image {
+                    position: relative;
+
+                    .OfferBadge {
+                      position: absolute;
+                      top: 0;
+                      right: 0;
+                      color: $white;
+                      border-radius: 5px;
+                      padding: 11px 36px;
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          &.SupportImages {
+            padding-bottom: 20px;
+
+            .swiper-wrapper {
+              .swiper-slide {
+                display: flex;
+                align-items: center;
+
+                img {
+                  cursor: pointer;
+                  object-fit: contain;
+                  object-position: center;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .ProductAbout {
+        $spacing: 20;
+        flex: 1;
+
+        @include media($sm) {
+          $spacing: 16;
+        }
+
+        form {
+          .MuiDivider-root {
+            border-color: $dividerColor;
+          }
+
+          .MuiAccordion-root {
+            .MuiAccordionSummary-root {
+              justify-content: flex-start;
+              gap: 8px;
+              min-height: initial;
+              @include padding-horizontal(0);
+
+              .MuiAccordionSummary-content {
+                flex: initial;
+                @include margin-vertical(0);
+              }
+
+              .MuiAccordionSummary-expandIconWrapper {
+                color: currentColor;
+
+                .MuiSvgIcon-root {
+                  g {
+                    opacity: 1;
+                  }
+                }
+              }
+            }
+
+            .MuiAccordionDetails-root {
+              padding-top: 10px;
+              @include padding-horizontal(0);
+            }
+          }
+
+          .Heading {
+            margin-bottom: 20px;
+
+            .ProductName {
+              margin-bottom: 8px;
+            }
+
+            .Wrapper {
+              justify-content: space-between;
+              align-items: flex-start;
+              gap: 8px;
+            }
+          }
+
+          .FixWrapper {
+            @include media($md) {
+              position: fixed;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              background: $white;
+              text-align: center;
+              width: 100%;
+              padding: 0 20px;
+              z-index: 1000; // as of now give random z-index ,
+
+              @include media-min($sm) {
+                padding: 0 24px;
+              }
+            }
+
+            .PricingDetails {
+              display: none;
+
+              @include media($md) {
+                display: block;
+                padding: 6px 0;
+
+                .Top {
+                  display: flex;
+                  align-items: center;
+                  margin-bottom: 0;
+
+                  @include media($sm) {
+                    gap: 5px;
+                  }
+
+                  .Left {
+                    align-items: center;
+
+                    @include media($xs) {
+                      gap: 8px;
+                    }
+
+                    .PriceWrapper {
+                      align-items: center;
+                      gap: 8px;
+
+                      @include media($xs) {
+                        flex-wrap: wrap;
+                        gap: 2px;
+                      }
+                    }
+
+                    .DiscountValue {
+                      flex-shrink: 0;
+                    }
+
+                    .PriceChangeReturn {
+                      @include media($sm) {
+                        margin: 0;
+                      }
+                    }
+                  }
+                }
+
+                .Bottom {
+                  display: none;
+                }
+
+              }
+            }
+
+            .Mobileflex {
+              @include media($md) {
+                display: flex;
+                justify-content: space-between;
+                gap: 10px;
+
+                @include media($sm) {
+                  gap: 10px;
+                }
+
+
+                .OrderDetails,
+                .OrderActions {
+                  padding: 8px 0;
+                  gap: 5px;
+                }
+
+                .OrderDetails {
+                  text-align: left;
+
+                  @include media($sm) {
+                    width: 60%;
+                  }
+
+                  @include media($xs) {
+                    width: 55%;
+                  }
+
+
+                }
+
+                .OrderDetails:has(> div.NotAvailable) {
+                  @include media($xs) {
+                    width: 100%;
+                  }
+                }
+
+                .OrderActions {
+                  flex-direction: column;
+
+                  @include media($sm) {
+                    width: 40%;
+                  }
+
+                  @include media($xs) {
+                    width: 45%;
+                  }
+
+                  .QuantityWrapper {
+                    justify-content: center;
+                  }
+
+                  .MuiButton-endIcon {
+                    @include media($xs) {
+                      display: none;
+                    }
+                  }
+                }
+
+                .MuiDivider-root {
+                  display: none;
+                }
+
+              }
+            }
+
+          }
+
+          .PricingDetails {
+            @include padding-vertical($spacing);
+
+            .Top {
+              justify-content: space-between;
+              align-items: flex-end;
+              flex-wrap: wrap;
+              gap: 16px;
+              margin-bottom: 10px;
+
+              @include media($md) {
+                display: none;
+              }
+
+              .Left {
+                align-items: flex-end;
+                gap: 16px;
+
+                .PriceWrapper {
+                  .ProductOriginalValue {
+                    font-weight: 600;
+                    text-decoration: line-through;
+                    color: rgba($dark, 0.5);
+                  }
+                }
+
+                .DiscountWrapper {
+                  gap: 6px;
+                  color: $sinopia;
+                }
+
+                .TextFlipAnimation {
+                  .Flipper {
+                    .Value {
+                      text-align: left;
+
+                      &.Front {
+                        color: $sinopia;
+                      }
+
+                      &.Back {
+                        color: $sinopia;
+                      }
+                    }
+                  }
+                }
+
+                .PriceChangeReturn {
+                  @include margin-horizontal(10);
+                  @include padding-vertical(2);
+                }
+              }
+
+              .Right {
+                justify-content: space-between;
+                align-items: center;
+                gap: 8px;
+                flex-grow: 1;
+
+                .DiscountMessage {
+                  color: $blueCyan;
+                }
+              }
+            }
+
+            .Bottom {
+              gap: 20px;
+              align-items: center;
+              flex-wrap: wrap;
+              max-width: $sm;
+
+              @include media($sm) {
+                gap: 18px;
+              }
+
+              .SliderWrapper {
+                flex-direction: column;
+                min-width: fit-content;
+                flex-grow: 1;
+                max-width: calc(100% - 1px);
+                padding-right: 8px;
+
+                .PriceMinMax {
+                  justify-content: space-between;
+                  gap: 10px;
+                }
+
+                .Slider {
+                  color: $blueCyan;
+                  height: 6px;
+                  padding: 0;
+                  margin-bottom: 12px;
+
+                  .MuiSlider-rail {
+                    height: inherit;
+                    opacity: 0.2;
+                  }
+
+                  .MuiSlider-thumb {
+                    top: 14px;
+                    width: 0;
+                    height: 0;
+                    border-radius: initial;
+                    border: none;
+                    border-left: 7px solid transparent;
+                    border-right: 7px solid transparent;
+                    border-bottom: 7px solid $blueCyan;
+                  }
+                }
+              }
+
+              .PriceChangeReturn {
+                .MuiTypography-body1 {
+                  line-height: normal;
+                }
+              }
+
+              .PriceHistorySelect {
+                line-height: normal;
+                background-color: $whiteMilk;
+                min-width: 75px;
+
+                &.Mui-focused {
+                  .MuiOutlinedInput-notchedOutline {
+                    border-width: 1px;
+                  }
+                }
+
+                .MuiSelect-select {
+                  height: initial;
+                  min-height: initial;
+                  padding-left: 10px;
+                  @include padding-vertical(8);
+                }
+
+                .MuiSvgIcon-root {
+                  color: inherit;
+                  right: 5px;
+                }
+
+                .MuiMenu-root {
+                  .MuiMenu-paper {
+                    .MuiMenu-list {
+                      .MuiMenuItem-root {
+                        &.Mui-selected {
+                          background-color: $mercury;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          .OrderDetails {
+            flex-direction: column;
+            gap: 8px;
+            color: rgba($dark, 0.6);
+            @include padding-vertical($spacing);
+
+            .ProductStockStatus {
+              justify-content: flex-start;
+            }
+          }
+
+          .OrderActions {
+            gap: 16px;
+            max-width: $sm;
+            @include padding-vertical($spacing);
+
+            @include media($sm) {
+              flex-wrap: wrap;
+            }
+
+            &>* {
+              width: 33%;
+
+              @include media($md) {
+                width: 100%;
+              }
+            }
+
+            .QuantityWrapper {
+              border-radius: 12px;
+              border: 2px solid $mercury;
+
+              .MuiIconButton-root {
+                $borderRadius: 10px;
+                height: auto;
+
+                @include media($md) {
+                  padding: 3px;
+                }
+
+                &.Minus {
+                  border-radius: $borderRadius 0px 0px $borderRadius;
+                }
+
+                &.Plus {
+                  border-radius: 0px $borderRadius $borderRadius 0px;
+                }
+              }
+
+              .InputRow {
+                max-width: 116px;
+
+                @include media-between($xs, $sm) {
+                  max-width: 60px;
+                }
+
+                .MuiFormControl-root {
+                  height: 100%;
+
+                  .MuiInputBase-root {
+                    height: inherit;
+                    font-size: pxToRem(18);
+                    color: $yellowFuel;
+                    background-color: transparent;
+
+                    @include media($md) {
+                      font-size: pxToRem(16);
+                    }
+
+                    .MuiInputBase-input {
+                      text-align: center;
+                      padding: 0;
+
+                      @include media($md) {
+                        @include padding-vertical(3);
+                        height: auto;
+                      }
+                    }
+
+                    .MuiOutlinedInput-notchedOutline {
+                      display: none;
+                    }
+                  }
+                }
+              }
+            }
+
+            .MuiButton-root {
+              padding: 10px 8px;
+
+              @include media($md) {
+                padding: 5px;
+                font-size: 12px;
+                line-height: 15px;
+              }
+
+              .MuiButton-endIcon {
+                margin-right: initial;
+
+                @include media-between($md, $lg) {
+                  display: none;
+                }
+              }
+            }
+          }
+
+          .SocialConnects {
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            @include padding-vertical($spacing);
+
+            @include media($sm) {
+              flex-wrap: wrap;
+              justify-content: flex-start;
+            }
+
+            .IconWithText {
+              gap: 10px;
+              color: rgba($dark, 0.6);
+              text-align: left;
+              text-decoration: none;
+
+              &:hover {
+                color: $yellowFuel;
+
+                .IconWrapper {
+                  color: $yellowFuel;
+                  border-color: $yellowFuel;
+                }
+              }
+            }
+
+            .IconWrapper {
+              flex-shrink: 0;
+              display: inline-flex;
+              align-items: center;
+              justify-content: center;
+              color: $elephant;
+              height: 32px;
+              width: 32px;
+              border-radius: 50%;
+              border: 1px solid rgba($dark, 0.6);
+              font-size: pxToRem(16);
+
+              @include media-min($xxl) {
+                width: 43px;
+                height: 43px;
+                font-size: pxToRem(22);
+              }
+
+              &:hover {
+                color: $yellowFuel;
+                border-color: $yellowFuel;
+                background-color: transparent;
+              }
+
+              .MuiSvgIcon-root {
+                font-size: inherit;
+              }
+
+              &.Watchlist {
+                font-size: pxToRem(18);
+                margin-right: -2px;
+              }
+            }
+          }
+
+          .AdditionalDetails {
+            flex-direction: column;
+            gap: 20px;
+            @include padding-vertical($spacing);
+
+            .RatingSliderWrapper {
+              flex-direction: column;
+
+              .LabelWrapper {
+                justify-content: space-between;
+                align-items: center;
+                gap: 16px;
+              }
+
+              .MuiSlider-root {
+                height: 10px;
+                pointer-events: none;
+                @include padding-vertical(0);
+
+                .MuiSlider-rail {
+                  height: inherit;
+                  opacity: 0.15;
+                }
+
+                .MuiSlider-thumb {
+                  display: none;
+                }
+              }
+            }
+
+            .RatingsList {
+              flex-direction: column;
+              gap: 10px;
+            }
+          }
+
+          .PromotionalDetails {
+            @include padding-vertical($spacing);
+          }
+
+          .InfoMessage {
+            align-items: center;
+            gap: 10px;
+            padding-top: 25px;
+          }
+        }
+      }
+    }
+
+    .TabsWrapper {
+      flex-direction: column;
+      margin-top: 60px;
+
+      @include media($md) {
+        margin-top: 25px;
+      }
+
+      .MuiTabs-root {
+        width: fit-content;
+        border-radius: 30px;
+        border: 1px solid $mercury;
+
+        @include media($md) {
+          border-radius: 10px;
+        }
+
+        .MuiTabs-scroller {
+          border-radius: inherit;
+
+          .MuiTabs-flexContainer {
+            flex-wrap: wrap;
+            border-radius: inherit;
+          }
+
+          .MuiTab-root {
+            max-width: initial;
+            text-transform: initial;
+            border-radius: 11px;
+            font-size: pxToRem(16);
+            line-height: pxToRem(26);
+            color: rgba($dark, 0.5);
+            border-radius: inherit;
+            @include padding-horizontal(40);
+
+            @include media($md) {
+              flex-grow: 1;
+              @include padding-horizontal(20);
+            }
+
+            @include media($sm) {
+              @include padding-horizontal(12);
+            }
+
+            &.Mui-selected {
+              color: $white;
+              font-weight: 700;
+              background-color: $yellowFuel;
+            }
+          }
+
+          .MuiTabs-indicator {
+            display: none;
+          }
+        }
+      }
+
+      .TabPanel {
+        padding: 25px;
+
+        @include media($sm) {
+          padding: 16px;
+        }
+
+        &.AdditionalInformation {
+          .Wrapper {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0 60px;
+
+            @include media($md) {
+              grid-template-columns: repeat(1, 1fr);
+            }
+
+            .ProductSpecification {
+              justify-content: space-between;
+              gap: 16px;
+              border-bottom: 1px solid rgba($dark, 0.1);
+              @include padding-vertical(10);
+
+              .Value {
+                text-align: right;
+              }
+            }
+          }
+        }
+
+        .TabTitle {
+          margin-bottom: 20px;
+
+          @include media($sm) {
+            margin-bottom: 16px;
+          }
+        }
+
+        .ScrollbarWrapper {
+          .Content {
+            overflow-wrap: break-word;
+
+            .MuiTableContainer-root {
+              .MuiTable-root {
+                border: none;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .RelatedProduct {
+    @include padding-vertical(80);
+
+    @include media($md) {
+      @include padding-vertical(50);
+    }
+
+    .ProductList {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin-top: 50px;
+
+      @include media($lg) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @include media($md) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @include media($sm) {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 20px;
+        margin-top: 30px;
+      }
+
+      @include media-between($md, $mmd) {
+        gap: 20px;
+      }
+
+      .ProductCard {
+        @include media-between($md, $mmd) {
+          .MuiCardActions-root {
+            .PrimaryAction {
+              letter-spacing: normal;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &.BmkPageProductDetail {
+    .AboutProduct {
+      .AboutWrapper {
+        .ProductAbout {
+          form {
+            .PricingDetails {
+              .Top {
+                .Left {
+                  .DiscountWrapper {
+                    color: #FF1F1F;
+                  }
+                }
+
+              }
+
+              .Bottom {
+                .SliderWrapper {
+                  .Slider {
+                    color: $pumpkinOrange;
+
+                    .MuiSlider-thumb {
+                      border-bottom-color: inherit;
+                    }
+                  }
+                }
+
+                .PriceChangeReturn {
+                  border-radius: 5px;
+                }
+
+                .PriceHistorySelect {
+                  border-radius: 5px;
+                }
+              }
+            }
+
+            .OrderDetails {
+              color: #000000;
+            }
+
+            .OrderActions {
+              .QuantityWrapper {
+                border-radius: 0;
+                border-color: #00000036;
+
+                .MuiIconButton-root {
+                  color: #000000;
+                }
+
+                .InputRow {
+                  .MuiFormControl-root {
+                    .MuiInputBase-root {
+                      color: #000000;
+                    }
+                  }
+                }
+              }
+            }
+
+            .SocialConnects {
+              .IconWithText {
+                &:hover {
+                  color: $pumpkinOrange;
+
+                  .IconWrapper {
+                    color: inherit;
+                    border-color: inherit;
+                  }
+                }
+              }
+
+              .IconWrapper {
+                &:hover {
+                  color: $pumpkinOrange;
+                  border-color: $pumpkinOrange;
+                }
+              }
+            }
+
+            .AdditionalDetails,
+            .PromotionalDetails {
+              padding-top: 40px;
+
+              .MuiAccordion-root {
+                .MuiAccordionDetails-root {
+                  padding-top: 22px;
+
+
+                  .GreyTable {
+                    .MuiTable-root {
+                      .MuiTableHead-root {
+                        background: #D9D9D966;
+                      }
+                    }
+                  }
+                }
+
+                .MuiAccordionSummary-root {
+                  background: #FCF8F5;
+                  border: 1px solid #0000000F;
+                  padding: 12px 15px;
+                  justify-content: space-between;
+
+                }
+              }
+            }
+
+          }
+        }
+      }
+
+      .TabsWrapper {
+        .ProductDescriptionTabs {
+          width: 100%;
+          border-color: #E6E6E6;
+          border-radius: 0;
+
+          .MuiTabs-flexContainer {
+            justify-content: center;
+
+            .MuiTab-root {
+              color: #000000;
+              font-weight: 600;
+
+              &.Mui-selected {
+                background-color: $white;
+                border-bottom: 3px solid #FF681A;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

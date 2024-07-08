@@ -1,0 +1,30 @@
+#Loader {
+  display: grid;
+  place-items: center;
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1501;
+  background-color: rgba($dark, 0.8);
+  backdrop-filter: blur(2px);
+  .Wrapper {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    padding: 16px;
+    img {
+      animation: spin 2s infinite linear;
+    }
+    @keyframes spin {
+      from {
+        transform: rotateY(0deg);
+      }
+      to {
+        transform: rotateY(360deg);
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+#PageRecentlyViewedProducts {
+  padding-bottom: 40px;
+  @include media($md) {
+    padding-bottom: 30px;
+  }
+  @include media($sm) {
+    padding-bottom: 24px;
+  }
+  .ProductList {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    @include media($lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    @include media($md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include media($sm) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
