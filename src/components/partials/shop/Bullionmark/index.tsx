@@ -23,7 +23,9 @@ const BestCategorySlider = lazy(() => import("./BestCategorySlider"));
 import { ENDPOINTS } from "@/utils/constants";
 import axiosInstance from "@/axiosfolder";
 // import Layout from "@/components/common/Layout";
-import BullionmarkHeader from "@/components/header/BullionmarkHeader";
+const BullionmarkHeader = lazy(
+  () => import("@/components/header/BullionmarkHeader")
+);
 const LazyBullionmarkFooter = lazy(
   () => import("@/components/footer/BullionmarkFooter")
 );
@@ -84,7 +86,7 @@ const BullionmarkShop = (props: any) => {
             configDetailsState?.Store_ShopPage_Meta_Description?.value
           }
         />
-        <BullionmarkHeader />
+        {!isRendering && <BullionmarkHeader />}
 
         {!isMobile &&
           configDetailsState?.Sliders_ShopHomepage_Enable?.value == true && (
