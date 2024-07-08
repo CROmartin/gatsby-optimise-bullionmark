@@ -20,6 +20,7 @@ module.exports = {
         icon: `src/assets/favicon.ico`,
       },
     },
+
     // {
     //   resolve: `gatsby-plugin-google-fonts-v2`,
     //   options: {
@@ -91,9 +92,8 @@ module.exports = {
     //       /Mui/, // Whitelist classes used by Material-UI components
     //     ],
     //     purgeOnly: [
-    //       // Purge only specific CSS files
-    //       '/bootstrap/dist/css/bootstrap.min.css', // Bootstrap CSS file
-    //       'src/**/*.scss', // All SCSS files in src directory
+    //       "/bootstrap/dist/css/bootstrap.min.css", // Bootstrap CSS file
+    //       "src/**/*.scss", // All SCSS files in src directory
     //     ],
     //   },
     // },

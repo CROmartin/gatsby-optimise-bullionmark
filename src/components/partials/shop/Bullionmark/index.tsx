@@ -13,7 +13,7 @@ import useUserDetailsFromToken from "@/hooks/useUserDetailsFromToken";
 import RenderOnViewportEntry from "@/components/common/RenderOnViewportEntry";
 import Loader from "@/components/common/Loader";
 const Toaster = lazy(() => import("@/components/common/Toaster"));
-import BestCategorySlider from "./BestCategorySlider";
+const BestCategorySlider = lazy(() => import("./BestCategorySlider"));
 
 // IT IS CAUSING CACHING ERROR
 // const BmkFeaturedProductsSlider = lazy(
@@ -58,7 +58,8 @@ const BullionmarkShop = (props: any) => {
   return (
     <>
       {/* <Loader open={loading} /> */}
-      <Layout isItMainPage={true}>
+      {/* <Layout isItMainPage={true}> */}
+      <>
         <Seo
           keywords={[
             "gatsby",
@@ -84,21 +85,29 @@ const BullionmarkShop = (props: any) => {
               <BannerSlider isItShopPage={true} />
             </Suspense>
           )} */}
-        <Skeleton height={"800px"}></Skeleton>
+        <Skeleton height={"1000px"}></Skeleton>
 
-        <BestCategorySlider
-          pageData={bmkShopPageSections}
-          PaddingClass={
-            !true && configDetailsState?.Sliders_ShopHomepage_Enable?.value
-              ? ""
-              : "TopBannerAbsent"
-          }
-          title={
-            configDetailsState?.[
-              "ShopHomepage_Section_1_Featured_Categories_Title"
-            ]?.value
-          }
-        />
+        <RenderOnViewportEntry
+          rootMargin="200px"
+          threshold={0.25}
+          minHeight={900}
+          skeletonMargin={-220}
+        >
+          <BestCategorySlider
+            pageData={bmkShopPageSections}
+            PaddingClass={
+              !isMobile &&
+              configDetailsState?.Sliders_ShopHomepage_Enable?.value
+                ? ""
+                : "TopBannerAbsent"
+            }
+            title={
+              configDetailsState?.[
+                "ShopHomepage_Section_1_Featured_Categories_Title"
+              ]?.value
+            }
+          />
+        </RenderOnViewportEntry>
         {/* <RenderOnViewportEntry
           rootMargin="200px"
           threshold={0.25}
@@ -186,7 +195,7 @@ const BullionmarkShop = (props: any) => {
             <Toaster />
           </Suspense>
         )}
-      </Layout>
+      </>
     </>
   );
 };
