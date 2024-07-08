@@ -1,46 +1,46 @@
-import React, { useEffect, useMemo } from "react";
+import React, { Suspense, lazy, useEffect, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import Seo from "@/components/common/Seo";
 import {
   setBmkShopPageSections,
   setConfigDetails,
 } from "@/redux/reducers/homepageReducer";
-// const BannerSlider = lazy(
-//   () => import("../../landing-page/Bullionmark/BannerSlider")
-// );
+const BannerSlider = lazy(
+  () => import("../../landing-page/Bullionmark/BannerSlider")
+);
 import { Skeleton, useMediaQuery } from "@mui/material";
 import useUserDetailsFromToken from "@/hooks/useUserDetailsFromToken";
-// import RenderOnViewportEntry from "@/components/common/RenderOnViewportEntry";
+import RenderOnViewportEntry from "@/components/common/RenderOnViewportEntry";
+import Loader from "@/components/common/Loader";
+const Toaster = lazy(() => import("@/components/common/Toaster"));
+import BestCategorySlider from "./BestCategorySlider";
 
-// import Layout from "@/components/common/Layout";
-
-// import Loader from "@/components/common/Loader";
-// const Toaster = lazy(() => import("@/components/common/Toaster"));
-// import BestCategorySlider from "./BestCategorySlider";
+// IT IS CAUSING CACHING ERROR
 // const BmkFeaturedProductsSlider = lazy(
 //   () => import("./BmkFeaturedProductsSlider")
 // );
 
 import { ENDPOINTS } from "@/utils/constants";
 import axiosInstance from "@/axiosfolder";
-// const ThreePicsRow = lazy(() => import("./ThreePicsRow"));
-// const OneBigPicAndContent = lazy(() => import("./OneBigPicAndContent"));
-// const BmkPopularProductSlider = lazy(() => import("./BmkPopularProductSlider"));
-// const ExclusiveJourneys = lazy(
-//   () => import("../../landing-page/Bullionmark/ExclusiveJourneys")
-// );
-// const InspiringStories = lazy(
-//   () => import("../../landing-page/Bullionmark/InspiringStories")
-// );
+import Layout from "@/components/common/Layout";
+const ThreePicsRow = lazy(() => import("./ThreePicsRow"));
+const OneBigPicAndContent = lazy(() => import("./OneBigPicAndContent"));
+const BmkPopularProductSlider = lazy(() => import("./BmkPopularProductSlider"));
+const ExclusiveJourneys = lazy(
+  () => import("../../landing-page/Bullionmark/ExclusiveJourneys")
+);
+const InspiringStories = lazy(
+  () => import("../../landing-page/Bullionmark/InspiringStories")
+);
 
 const BullionmarkShop = (props: any) => {
   const { serverData } = props;
   const dispatch = useAppDispatch();
   const {
     configDetails: configDetailsState,
-    // openToaster,
-    // loading,
-    // bmkShopPageSections,
+    openToaster,
+    loading,
+    bmkShopPageSections,
   } = useAppSelector((state) => state.homePage);
 
   useEffect(() => {
@@ -49,7 +49,7 @@ const BullionmarkShop = (props: any) => {
   }, [serverData]);
 
   useUserDetailsFromToken();
-  //   const isMobile = useMediaQuery((theme: any) => theme.breakpoints.down("sm"));
+  const isMobile = useMediaQuery((theme: any) => theme.breakpoints.down("sm"));
   const keyWords = useMemo(() => {
     return (
       configDetailsState?.Store_ShopPage_Meta_Keywords?.value?.split(",") || []
@@ -58,7 +58,7 @@ const BullionmarkShop = (props: any) => {
   return (
     <>
       {/* <Loader open={loading} /> */}
-      <>
+      <Layout isItMainPage={true}>
         <Seo
           keywords={[
             "gatsby",
@@ -85,28 +85,21 @@ const BullionmarkShop = (props: any) => {
             </Suspense>
           )} */}
         <Skeleton height={"800px"}></Skeleton>
+
+        <BestCategorySlider
+          pageData={bmkShopPageSections}
+          PaddingClass={
+            !true && configDetailsState?.Sliders_ShopHomepage_Enable?.value
+              ? ""
+              : "TopBannerAbsent"
+          }
+          title={
+            configDetailsState?.[
+              "ShopHomepage_Section_1_Featured_Categories_Title"
+            ]?.value
+          }
+        />
         {/* <RenderOnViewportEntry
-          rootMargin="200px"
-          threshold={0.25}
-          minHeight={900}
-          skeletonMargin={-220}
-        >
-          <BestCategorySlider
-            pageData={bmkShopPageSections}
-            PaddingClass={
-              !isMobile &&
-              configDetailsState?.Sliders_ShopHomepage_Enable?.value
-                ? ""
-                : "TopBannerAbsent"
-            }
-            title={
-              configDetailsState?.[
-                "ShopHomepage_Section_1_Featured_Categories_Title"
-              ]?.value
-            }
-          />
-        </RenderOnViewportEntry>
-        <RenderOnViewportEntry
           rootMargin="200px"
           threshold={0.25}
           minHeight={950}
@@ -127,7 +120,7 @@ const BullionmarkShop = (props: any) => {
             productData={serverData?.productData}
             // priceForEachId={serverData?.priceForEachId}
           />
-        </RenderOnViewportEntry>
+        </RenderOnViewportEntry> */}
         <RenderOnViewportEntry
           rootMargin="200px"
           threshold={0.25}
@@ -192,8 +185,8 @@ const BullionmarkShop = (props: any) => {
           <Suspense fallback={<></>}>
             <Toaster />
           </Suspense>
-        )} */}
-      </>
+        )}
+      </Layout>
     </>
   );
 };
