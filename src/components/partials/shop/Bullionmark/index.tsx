@@ -1,4 +1,4 @@
-import React, { Suspense, lazy, useEffect, useMemo } from "react";
+import React, { Suspense, lazy, useEffect, useMemo, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import Seo from "@/components/common/Seo";
 import {
@@ -39,6 +39,7 @@ const InspiringStories = lazy(
 );
 const BullionmarkShop = (props: any) => {
   const { serverData } = props;
+  const [isRendering, setIsRendering] = useState(true);
   const dispatch = useAppDispatch();
   const {
     configDetails: configDetailsState,
@@ -50,6 +51,7 @@ const BullionmarkShop = (props: any) => {
   useEffect(() => {
     dispatch(setConfigDetails(serverData?.configDetails));
     dispatch(setBmkShopPageSections(serverData?.bmkShopPageSections));
+    setTimeout(() => setIsRendering(false), 8000);
   }, [serverData]);
 
   useUserDetailsFromToken();
@@ -61,7 +63,7 @@ const BullionmarkShop = (props: any) => {
   }, [configDetailsState]);
   return (
     <>
-      <Loader open={loading} />
+      <Loader open={loading || isRendering} />
       {/* <Layout isItMainPage={true}> */}
       <>
         <Seo
@@ -90,7 +92,7 @@ const BullionmarkShop = (props: any) => {
               <BannerSlider isItShopPage={true} />
             </Suspense>
           )}
-        <Skeleton height={"1000px"}></Skeleton>
+        {isRendering && <Skeleton height={"90vh"}></Skeleton>}
 
         <RenderOnViewportEntry
           rootMargin="200px"
