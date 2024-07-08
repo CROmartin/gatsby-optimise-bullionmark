@@ -4,7 +4,6 @@ import {
   Container,
   Stack,
   Button,
-  Link as LinkM,
   IconButton,
   Typography,
   Box,
@@ -13,12 +12,8 @@ import {
 import classNames from "classnames";
 import { useLocation } from "@reach/router";
 
-// Components
-import SearchField from "./SearchField";
-
 // Assets
 import {
-  Call,
   SignInIcon,
   SignOutIcon,
   HamburgerIcon,
@@ -35,7 +30,7 @@ import {
   LogOutUserAPI,
 } from "@/redux/reducers/homepageReducer";
 import useAPIoneTime from "@/hooks/useAPIoneTime";
-import { STORE_CODE, THEME_TYPE } from "@/axiosfolder";
+import { THEME_TYPE } from "@/axiosfolder";
 import {
   isItNewsOrBlogPage,
   pagesOnWhichNeedToCallTopCategoriesAPi,
@@ -104,10 +99,25 @@ function FrontMain(props: any) {
         <Stack className="MainHeader__Wrapper">
           <Stack className="Left">
             <Link className="Logo" to="/">
-              {/* <img src={configDetailsState?.[isItHomeOrShopPage ?
-                             isItHomePage ? (trigger ? 'BrandLogoURL_Header' :'Brand_Dark_LogoURL' ) : (trigger ? 'BrandLogoURL_Header' :'Brand_Dark_LogoURL' )
-                             
-                             : "Brand_Dark_LogoURL"]?.value} width={mobile ? 190 : 246} height={mobile ? 30 : 40} alt="QMint white logo" fetchPriority="high" /> */}
+              <img
+                src={
+                  configDetailsState?.[
+                    isItHomeOrShopPage
+                      ? isItHomePage
+                        ? trigger
+                          ? "BrandLogoURL_Header"
+                          : "Brand_Dark_LogoURL"
+                        : trigger
+                          ? "BrandLogoURL_Header"
+                          : "Brand_Dark_LogoURL"
+                      : "Brand_Dark_LogoURL"
+                  ]?.value
+                }
+                width={mobile ? 190 : 246}
+                height={mobile ? 30 : 40}
+                alt="QMint white logo"
+                fetchPriority="high"
+              />
             </Link>
           </Stack>
           <Stack className="Center">
