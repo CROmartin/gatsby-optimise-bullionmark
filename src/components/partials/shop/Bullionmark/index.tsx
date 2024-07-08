@@ -22,7 +22,12 @@ const BestCategorySlider = lazy(() => import("./BestCategorySlider"));
 
 import { ENDPOINTS } from "@/utils/constants";
 import axiosInstance from "@/axiosfolder";
-import Layout from "@/components/common/Layout";
+// import Layout from "@/components/common/Layout";
+import BullionmarkHeader from "@/components/header/BullionmarkHeader";
+const LazyBullionmarkFooter = lazy(
+  () => import("@/components/footer/BullionmarkFooter")
+);
+
 const ThreePicsRow = lazy(() => import("./ThreePicsRow"));
 const OneBigPicAndContent = lazy(() => import("./OneBigPicAndContent"));
 const BmkPopularProductSlider = lazy(() => import("./BmkPopularProductSlider"));
@@ -32,7 +37,6 @@ const ExclusiveJourneys = lazy(
 const InspiringStories = lazy(
   () => import("../../landing-page/Bullionmark/InspiringStories")
 );
-
 const BullionmarkShop = (props: any) => {
   const { serverData } = props;
   const dispatch = useAppDispatch();
@@ -57,7 +61,7 @@ const BullionmarkShop = (props: any) => {
   }, [configDetailsState]);
   return (
     <>
-      {/* <Loader open={loading} /> */}
+      <Loader open={loading} />
       {/* <Layout isItMainPage={true}> */}
       <>
         <Seo
@@ -78,13 +82,14 @@ const BullionmarkShop = (props: any) => {
             configDetailsState?.Store_ShopPage_Meta_Description?.value
           }
         />
+        <BullionmarkHeader />
 
-        {/* {!isMobile &&
+        {!isMobile &&
           configDetailsState?.Sliders_ShopHomepage_Enable?.value == true && (
             <Suspense fallback={<Skeleton height={"500px"}></Skeleton>}>
               <BannerSlider isItShopPage={true} />
             </Suspense>
-          )} */}
+          )}
         <Skeleton height={"1000px"}></Skeleton>
 
         <RenderOnViewportEntry
@@ -195,6 +200,13 @@ const BullionmarkShop = (props: any) => {
             <Toaster />
           </Suspense>
         )}
+        <RenderOnViewportEntry
+          rootMargin="200px"
+          threshold={0.25}
+          minHeight={800}
+        >
+          <LazyBullionmarkFooter />
+        </RenderOnViewportEntry>
       </>
     </>
   );

@@ -1,4 +1,4 @@
-import React, { useMemo, lazy, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   useMediaQuery,
   Container,
@@ -41,7 +41,7 @@ import {
   pagesOnWhichNeedToCallTopCategoriesAPi,
 } from "@/utils/common";
 import useImageInView from "@/hooks/useImageInView";
-const Navigation = lazy(() => import("./Navigation"));
+import Navigation from "./Navigation";
 
 function FrontMain(props: any) {
   const dispatch = useAppDispatch();
