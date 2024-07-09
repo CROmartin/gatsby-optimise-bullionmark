@@ -66,7 +66,7 @@ const BullionmarkShop = (props: any) => {
   }, [configDetailsState]);
   return (
     <>
-      <Loader open={loading || isRendering} />
+      {/* <Loader open={loading || isRendering} /> */}
       {/* <Layout isItMainPage={true}> */}
       <>
         <Seo
@@ -95,7 +95,59 @@ const BullionmarkShop = (props: any) => {
               <BannerSlider isItShopPage={true} />
             </Suspense>
           )}
-        {/* {isRendering && <Skeleton height={"90vh"}></Skeleton>} */}
+        {isRendering && (
+          <>
+            <Skeleton
+              height={"128px"}
+              width={"100%"}
+              style={{ marginBottom: "96px", transform: "scale(1)" }}
+            />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-start",
+                gap: "32px",
+                alignItems: "center",
+                marginBottom: "48px",
+              }}
+            >
+              <Skeleton height={"64px"} width={"90%"} />
+              <Skeleton
+                height={"400px"}
+                width={"90%"}
+                style={{ transform: "scale(1)" }}
+              />
+              <Skeleton height={"64px"} width={"90%"} />
+            </div>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center",
+                gap: "32px",
+                alignItems: "center",
+                marginBottom: "48px",
+              }}
+            >
+              <Skeleton
+                height={"400px"}
+                width={"400px"}
+                style={{ transform: "scale(1)" }}
+              />
+              <Skeleton
+                height={"400px"}
+                width={"400px"}
+                style={{ transform: "scale(1)" }}
+              />
+              <Skeleton
+                height={"400px"}
+                width={"400px"}
+                style={{ transform: "scale(1)" }}
+              />
+            </div>
+          </>
+        )}
 
         <RenderOnViewportEntry
           rootMargin="200px"
