@@ -23,6 +23,7 @@ const BestCategorySlider = lazy(() => import("./BestCategorySlider"));
 import { ENDPOINTS } from "@/utils/constants";
 import axiosInstance from "@/axiosfolder";
 // import Layout from "@/components/common/Layout";
+
 const BullionmarkHeader = lazy(
   () => import("@/components/header/BullionmarkHeader")
 );
@@ -65,7 +66,7 @@ const BullionmarkShop = (props: any) => {
   }, [configDetailsState]);
   return (
     <>
-      <Loader open={loading || isRendering} />
+      {/* <Loader open={loading || isRendering} /> */}
       {/* <Layout isItMainPage={true}> */}
       <>
         <Seo
