@@ -11,9 +11,9 @@ const BannerSlider = lazy(
 import { Skeleton, useMediaQuery } from "@mui/material";
 import useUserDetailsFromToken from "@/hooks/useUserDetailsFromToken";
 import RenderOnViewportEntry from "@/components/common/RenderOnViewportEntry";
-import Loader from "@/components/common/Loader";
 const Toaster = lazy(() => import("@/components/common/Toaster"));
 const BestCategorySlider = lazy(() => import("./BestCategorySlider"));
+import BestCategorySliderSkeleton from "./BestCategorySliderSkeleton";
 
 // IT IS CAUSING CACHING ERROR
 // const BmkFeaturedProductsSlider = lazy(
@@ -100,9 +100,24 @@ const BullionmarkShop = (props: any) => {
             <Skeleton
               height={"128px"}
               width={"100%"}
-              style={{ marginBottom: "96px", transform: "scale(1)" }}
+              style={{ marginBottom: "32px", transform: "scale(1)" }}
             />
-            <div
+            <BestCategorySliderSkeleton
+              pageData={bmkShopPageSections}
+              PaddingClass={
+                !isMobile &&
+                configDetailsState?.Sliders_ShopHomepage_Enable?.value
+                  ? ""
+                  : "TopBannerAbsent"
+              }
+              title={
+                configDetailsState?.[
+                  "ShopHomepage_Section_1_Featured_Categories_Title"
+                ]?.value
+              }
+            />
+
+            {/* <div
               style={{
                 display: "flex",
                 flexDirection: "column",
@@ -145,7 +160,7 @@ const BullionmarkShop = (props: any) => {
                 width={"400px"}
                 style={{ transform: "scale(1)" }}
               />
-            </div>
+            </div> */}
           </>
         )}
 
