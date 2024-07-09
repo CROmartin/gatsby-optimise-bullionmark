@@ -94,7 +94,7 @@ const BullionmarkShop = (props: any) => {
               <BannerSlider isItShopPage={true} />
             </Suspense>
           )}
-        {isRendering && <Skeleton height={"90vh"}></Skeleton>}
+        {/* {isRendering && <Skeleton height={"90vh"}></Skeleton>} */}
 
         <RenderOnViewportEntry
           rootMargin="200px"
