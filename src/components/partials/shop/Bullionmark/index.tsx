@@ -66,7 +66,7 @@ const BullionmarkShop = (props: any) => {
   }, [configDetailsState]);
   return (
     <>
-      {/* <Loader open={loading || isRendering} /> */}
+      <Loader open={loading || isRendering} />
       {/* <Layout isItMainPage={true}> */}
       <>
         <Seo
