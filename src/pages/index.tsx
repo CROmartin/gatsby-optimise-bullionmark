@@ -4,7 +4,7 @@ import React from "react";
 
 // Create a wrapper component to handle conditional rendering
 const ShopWrapper = (props: any) => {
-  return <BullionmarkShop />;
+  return <BullionmarkShop {...props} />;
 };
 
 // Export getServerData from the component that will be used
