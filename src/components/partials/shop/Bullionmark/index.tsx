@@ -54,7 +54,7 @@ const BullionmarkShop = (props: any) => {
   useEffect(() => {
     dispatch(setConfigDetails(serverData?.configDetails));
     dispatch(setBmkShopPageSections(serverData?.bmkShopPageSections));
-    setTimeout(() => setIsRendering(false), 7000);
+    setTimeout(() => setIsRendering(false), 3500);
   }, [serverData]);
 
   useUserDetailsFromToken();
