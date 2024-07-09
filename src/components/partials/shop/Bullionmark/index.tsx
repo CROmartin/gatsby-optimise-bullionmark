@@ -102,20 +102,23 @@ const BullionmarkShop = (props: any) => {
               width={"100%"}
               style={{ marginBottom: "32px", transform: "scale(1)" }}
             />
-            <BestCategorySliderSkeleton
-              pageData={bmkShopPageSections}
-              PaddingClass={
-                !isMobile &&
-                configDetailsState?.Sliders_ShopHomepage_Enable?.value
-                  ? ""
-                  : "TopBannerAbsent"
-              }
-              title={
-                configDetailsState?.[
-                  "ShopHomepage_Section_1_Featured_Categories_Title"
-                ]?.value
-              }
-            />
+
+            {isMobile && (
+              <BestCategorySliderSkeleton
+                pageData={bmkShopPageSections}
+                PaddingClass={
+                  !isMobile &&
+                  configDetailsState?.Sliders_ShopHomepage_Enable?.value
+                    ? ""
+                    : "TopBannerAbsent"
+                }
+                title={
+                  configDetailsState?.[
+                    "ShopHomepage_Section_1_Featured_Categories_Title"
+                  ]?.value
+                }
+              />
+            )}
 
             {/* <div
               style={{
